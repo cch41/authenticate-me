@@ -5,6 +5,19 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
+
+router.get('/', restoreUser, (req, res) => {
+    // why do we access it from the req and not the req.body?
+    const { user } = req
+
+    if (user) {
+        // why don't we have to await this?
+        return res.json({ user: user.toSafeObject() });
+    } else {
+        return res.json({});
+    }
+});
+
 router.post('/', asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
     const user = await User.login({ credential, password });
