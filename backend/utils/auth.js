@@ -26,8 +26,6 @@ const setTokenCookie = (res, user) => {
 const restoreUser = (req, res, next) => {
     const { token } = req.cookies;
 
-    // how does the cb know the error will be the first parameter?
-    // why do we return a function instead of putting this in the function?
     return jwt.verify(token, secret, null, async (err, payload) => {
         if (err) {
             return next();
@@ -38,12 +36,9 @@ const restoreUser = (req, res, next) => {
             req.user = await User.scope('currentUser').findByPk(id);
         } catch (err) {
             res.clearCookie('token');
-
-            // why do you always have to tell it to go to the next function?
             return next();
         }
 
-        // why is this line necessary? shouldn't the catch already run if there is no user
         if (!req.user) res.clearCookie('token');
 
         return next();
