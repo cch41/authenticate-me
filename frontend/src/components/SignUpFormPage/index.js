@@ -13,7 +13,6 @@ const SignUpForm = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
 
-    if (user) return <Redirect to='/' />;
 
     useEffect(() => {
         if (password.length > 5 && password !== confirmPassword) {
@@ -22,6 +21,8 @@ const SignUpForm = () => {
             setErrors([]);
         }
     }, [password, confirmPassword]);
+
+    if (user) return <Redirect to='/' />;
 
     const onSubmit = (e) => {
         e.preventDefault();

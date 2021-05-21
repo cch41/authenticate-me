@@ -11,7 +11,7 @@ const setUser = (user) => {
     }
 }
 
-const removeSession = () => {
+const removeUser = () => {
     return {
         type: REMOVE_USER
     }
@@ -53,6 +53,14 @@ export const signup = (user) => async (dispatch) => {
 
     dispatch(setUser(data.user));
     return res
+}
+
+export const logout = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session', {
+        method: 'DELETE'
+    });
+    dispatch(removeUser());
+    return res;
 }
 
 const initialState = { user: null };

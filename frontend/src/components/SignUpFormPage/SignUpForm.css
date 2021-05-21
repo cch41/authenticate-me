@@ -1,0 +1,7 @@
+input {
+    display: flex;
+}
+
+.profile-dropdown {
+    list-style-type: none;
+}

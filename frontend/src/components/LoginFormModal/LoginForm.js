@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 import './LoginForm.css';
 
@@ -9,10 +8,6 @@ const LoginFormPage = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
-    const history = useHistory();
-
-    const user = useSelector(state => state.session.user);
-    if (user) history.push('/');
 
     const onSubmit = (e) => {
         e.preventDefault();
