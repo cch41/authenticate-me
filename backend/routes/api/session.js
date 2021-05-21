@@ -10,11 +10,9 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 
 router.get('/', restoreUser, (req, res) => {
-    // why do we access it from the req and not the req.body?
     const { user } = req
 
     if (user) {
-        // why don't we have to await this?
         return res.json({ user: user.toSafeObject() });
     } else {
         return res.json({});
