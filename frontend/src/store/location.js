@@ -6,7 +6,7 @@ const addLocation = (location) => (
     { type: ADD_LOCATION, location }
 );
 
-export const createLocation = location = async (dispatch) => {
+export const createLocation = (location) => async (dispatch) => {
     const { image, userId, name, price, address, city, state, country, description } = location;
     const formData = new FormData();
     formData.append("image", image)
@@ -19,7 +19,7 @@ export const createLocation = location = async (dispatch) => {
     formData.append("country", country);
     formData.append("description", description);
 
-    const res = await csrfFetch(`/api/users/`, {
+    const res = await csrfFetch(`/api/locations/`, {
       method: "POST",
       headers: {
         "Content-Type": "multipart/form-data",
