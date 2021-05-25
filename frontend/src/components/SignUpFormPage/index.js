@@ -30,7 +30,7 @@ const SignUpForm = () => {
         return dispatch(signup({ email, username, password }))
             .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(...errors, data.errors);
+                if (data && data.errors) setErrors([...errors, data.errors]);
             })
 
     }

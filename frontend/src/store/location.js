@@ -7,12 +7,13 @@ const addLocation = (location) => (
 );
 
 export const createLocation = (location) => async (dispatch) => {
-    const { image, userId, name, price, address, unit, city, state, country, description } = location;
+    const { userId, name, price, tags, image, address, unit, city, state, country, zipcode, description } = location;
 
     const formData = new FormData();
     formData.append("image", image)
     formData.append("userId", userId);
     formData.append("name", name);
+    formData.append("tags", tags);
     formData.append("price", price);
     formData.append("address", address);
     if (unit) {
@@ -21,6 +22,7 @@ export const createLocation = (location) => async (dispatch) => {
     formData.append("city", city);
     formData.append("state", state);
     formData.append("country", country);
+    formData.append("zipcode", zipcode);
     formData.append("description", description);
 
     const res = await csrfFetch(`/api/locations/`, {
@@ -32,8 +34,8 @@ export const createLocation = (location) => async (dispatch) => {
     });
 
     const data = await res.json();
-    console.log(data);
-    dispatch(addLocation(data));
+    dispatch(addLocation(data))
+    return data
 };
 
 const locationsReducer = (state = {}, action) => {

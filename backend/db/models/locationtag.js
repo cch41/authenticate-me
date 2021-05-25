@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     tagId: DataTypes.INTEGER
   }, {});
   LocationTag.associate = function(models) {
-    // associations can be defined here
   };
   return LocationTag;
 };

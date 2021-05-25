@@ -22,10 +22,10 @@ module.exports = {
       },
       address: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       unit: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       city: {
         allowNull: false,
@@ -38,6 +38,10 @@ module.exports = {
       country: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+      zipcode: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       description: {
         allowNull: false,

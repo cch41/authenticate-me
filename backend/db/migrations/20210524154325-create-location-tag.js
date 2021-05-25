@@ -11,12 +11,10 @@ module.exports = {
       locationId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Locations' }
       },
       tagId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Tags' }
       },
       createdAt: {
         allowNull: false,

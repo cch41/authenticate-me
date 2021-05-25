@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const COASTAL_CAMPER = "access-to-coastal-camper";
+const COASTAL_CAMPER = "coastal-camper";
 
 const multer = require("multer");
 

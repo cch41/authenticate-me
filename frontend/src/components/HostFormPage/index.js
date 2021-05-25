@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import './HostForm.css';
 import { Multiselect } from 'multiselect-react-dropdown'
 import { createLocation } from '../../store/location';
+import { useHistory } from 'react-router-dom';
 
 // create host form (essentially creating a location)
 // add aws3
@@ -26,6 +27,7 @@ const HostForm = () => {
     const [zipcode, setZipcode] = useState('');
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(async () => {
         const res = await fetch('/api/tags');
@@ -58,17 +60,14 @@ const HostForm = () => {
             zipcode,
             userId: user.id
         };
-        let newErrors = [];
 
         return dispatch(createLocation(formValues))
+            .then(() => history.push('/'))
+            .then(() => window.alert('Host location submitted successfully'))
             .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) {
-                    console.log(data.errors)
-                    newErrors = data.errors;
-                    setErrors(newErrors);
-                }
-            });
+                if (data && data.errors) setErrors([...errors, data.errors]);
+            })
     }
 
     return (

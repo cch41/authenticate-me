@@ -1,0 +1,23 @@
+.tag-picture {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 400px;
+    width: 400px;
+    border-radius: 0.5;
+    margin: 20px;
+}
+
+.tag-picture:hover {
+    cursor: pointer;
+}
+
+.tag-name {
+    background: white;
+    height: 30px;
+    width: 200px;
+    font: 30px "Helvetica Neue";
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}

@@ -1,25 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Location = sequelize.define('Location', {
-    name: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [4, 50]
-      },
-    },
+    name: DataTypes.STRING,
     price: DataTypes.INTEGER,
     imageUrl: DataTypes.STRING,
-    address: DataTypes.INTEGER,
-    unit: DataTypes.INTEGER,
+    address: DataTypes.STRING,
+    unit: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
     country: DataTypes.STRING,
-    description: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [50, 1000]
-      },
-    },
+    zipcode: DataTypes.INTEGER,
+    description: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {});
   Location.associate = function(models) {
