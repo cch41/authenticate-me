@@ -7,13 +7,17 @@ const addLocation = (location) => (
 );
 
 export const createLocation = (location) => async (dispatch) => {
-    const { image, userId, name, price, address, city, state, country, description } = location;
+    const { image, userId, name, price, address, unit, city, state, country, description } = location;
+
     const formData = new FormData();
     formData.append("image", image)
     formData.append("userId", userId);
     formData.append("name", name);
     formData.append("price", price);
     formData.append("address", address);
+    if (unit) {
+        formData.append("unit", unit);
+    }
     formData.append("city", city);
     formData.append("state", state);
     formData.append("country", country);
@@ -28,6 +32,7 @@ export const createLocation = (location) => async (dispatch) => {
     });
 
     const data = await res.json();
+    console.log(data);
     dispatch(addLocation(data));
 };
 

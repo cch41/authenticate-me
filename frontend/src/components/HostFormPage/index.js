@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './HostForm.css';
-// import { createLocation } from '../../store/location';
+import { Multiselect } from 'multiselect-react-dropdown'
+import { createLocation } from '../../store/location';
 
 // create host form (essentially creating a location)
 // add aws3
@@ -15,22 +16,25 @@ const HostForm = () => {
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const [tags, setTags] = useState([]);
+    const [tagOptions, setTagOptions] = useState([]);
+    const [address, setAddress] = useState('');
+    const [unit, setUnit] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    const [zipcode, setZipcode] = useState('');
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
 
-    let tags = [];
     useEffect(async () => {
         const res = await fetch('/api/tags');
-        const json = await res.json();
-        console.log(json)
+        const data = await res.json();
+        setTagOptions(data.tags);
     }, []);
-
-    // get tags from the database and be able to select multiple
-    // verify provided address
 
     const user = useSelector(state => state.session.user);
     if (!user) return <Redirect to='/signup' />;
-
 
     const updateFile = (e) => {
         const file = e.target.files[0];
@@ -39,27 +43,32 @@ const HostForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
         const formValues = {
             name,
             price,
             description,
+            image,
+            tags,
+            address,
+            unit,
+            city,
+            state,
+            country,
+            zipcode,
             userId: user.id
         };
-        console.log(formValues);
-        // return
-        // POST to /api/locations
-        // dispatch(createLocation(formValues))
-        //     .then(() => {
-        //         window.alert('New location added successfully');
-        //         res.redirect('/')
-        //     })
-        //     .catch(async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) {
-        //             newErrors = data.errors;
-        //             setErrors(newErrors);
-        //         }
-        //     });
+        let newErrors = [];
+
+        return dispatch(createLocation(formValues))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) {
+                    console.log(data.errors)
+                    newErrors = data.errors;
+                    setErrors(newErrors);
+                }
+            });
     }
 
     return (
@@ -67,7 +76,7 @@ const HostForm = () => {
             <ul>
                 {errors.map((error, i) => <li key={i}>{error}</li>)}
             </ul>
-            <p class="note"><em>* = required field</em></p>
+            <p className="note"><em>* = required field</em></p>
 
             <label htmlFor="name">Name*</label>
             <input name="name"
@@ -76,6 +85,14 @@ const HostForm = () => {
                 onChange={e => setName(e.target.value)}
                 required
             ></input>
+
+            <label htmlFor="tags">Tags</label>
+            <Multiselect options={tagOptions} displayValue="name"
+                onSelect={(array, selectedTag) => setTags([...tags, selectedTag.id])}
+                onRemove={(array, selectedTag) => {
+                    const newArray = tags.filter(tagId => tagId !== selectedTag.id)
+                    setTags(newArray);
+                }} />
             <label htmlFor="price">Price / night*</label>
             <input name="price"
                 type="number"
@@ -83,6 +100,7 @@ const HostForm = () => {
                 onChange={e => setPrice(e.target.value)}
                 required
             ></input>
+
             <label htmlFor="description">Description*</label>
             <textarea name="description"
                 value={description}
@@ -91,38 +109,37 @@ const HostForm = () => {
             ></textarea>
             <label htmlFor="image">Image*</label>
             <input name="image" type="file" onChange={updateFile} required />
-            <label>Tags</label>
-            <input>
-            </input>
 
-            <label class="full-field">
-                <span class="form-label">Address*</span>
+            <label className="full-field">
+                <span className="form-label">Address*</span>
                 <input
                     id="address"
                     name="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                     required
-                    autocomplete="off"
+                    autoComplete="off"
                 />
             </label>
-            <label class="full-field">
-                <span class="form-label">Apartment, unit, suite, or floor #</span>
-                <input id="address2" name="address2" />
+            <label htmlFor="form-label" className="full-field">
+                <span className="form-label">Apartment, unit, suite, or floor #</span>
+                <input id="address2" name="address2" value={unit} onChange={(e) => setUnit(e.target.value)} />
             </label>
-            <label class="full-field">
-                <span class="form-label">City*</span>
-                <input id="locality" name="locality" required />
+            <label htmlFor="form-label" className="full-field">
+                <span className="form-label">City*</span>
+                <input id="locality" name="locality" value={city} onChange={(e) => setCity(e.target.value)} required />
             </label>
-            <label class="slim-field-left">
-                <span class="form-label">State/Province*</span>
-                <input id="state" name="state" required />
+            <label className="slim-field-left">
+                <span className="form-label">State/Province*</span>
+                <input id="state" name="state" value={state} onChange={(e) => setState(e.target.value)} required />
             </label>
-            <label class="slim-field-right" for="postal_code">
-                <span class="form-label">Postal code*</span>
-                <input id="postcode" name="postcode" required />
+            <label className="slim-field-right" for="zip_code">
+                <span className="form-label">ZIP Code*</span>
+                <input id="zipcode" name="zipcode" value={zipcode} onChange={(e) => setZipcode(e.target.value)} required />
             </label>
-            <label class="full-field">
-                <span class="form-label">Country/Region*</span>
-                <input id="country" name="country" required />
+            <label className="full-field">
+                <span className="form-label">Country/Region*</span>
+                <input id="country" name="country" value={country} onChange={(e) => setCountry(e.target.value)} required />
             </label>
             <button type="submit" disabled={false}>HOST</button>
         </form>
