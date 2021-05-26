@@ -1,0 +1,22 @@
+.location-information {
+    height: auto;
+    /* width: 250px; */
+}
+
+.location-description {
+    font-size: 13px;
+    padding: 5px 0px;
+    font-weight: normal;
+    height: auto;
+    overflow-wrap: anywhere;
+}
+
+.location-price {
+    padding-top: 10px;
+}
+
+.booking-form {
+    position: sticky;
+    top: 20px;
+    float: right;
+}

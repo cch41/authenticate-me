@@ -18,7 +18,6 @@ const Tag = ({ tag }) => {
     const image = imageName();
 
     const handleClick = () => {
-        console.log('got in')
         history.push(`/tags/${tag.id}`)
     };
 

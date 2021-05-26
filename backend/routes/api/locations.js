@@ -3,7 +3,7 @@ const router = express.Router();
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Location, LocationTag } = require('../../db/models');
+const { Location, LocationTag, Review } = require('../../db/models');
 
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
@@ -38,8 +38,8 @@ const validateLocation = [
     check('zipcode')
         .exists()
         .withMessage('Please provide a ZIP Code')
-        .isInt({ min: 5 })
-        .withMessage('ZIP Code must be 5 digits'),
+        .isInt({ min: 0 })
+        .withMessage('ZIP Code must be valid'),
     check('description')
         .exists()
         .withMessage('Please provide a description')
@@ -64,13 +64,21 @@ router.post('/', singleMulterUpload('image'), validateLocation, asyncHandler(asy
     if (tags.length > 0) {
         tags.forEach(async tag => {
             tag = Number(tag);
-            console.log(tag)
             await LocationTag.create({ tagId: tag, locationId: location.id })
         });
 
     }
 
     return res.json({ location })
+}));
+
+router.get('/:locationId', asyncHandler(async (req, res) => {
+    const { locationId } = req.params;
+    console.log(locationId)
+    const location = await Location.findByPk(locationId, {
+        include: [Review]
+    })
+    res.json({ location });
 }));
 
 module.exports = router;

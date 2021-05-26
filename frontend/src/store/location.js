@@ -1,9 +1,9 @@
 import { csrfFetch } from './csrf';
 
-const ADD_LOCATION = 'locations/addLocation';
+const SET_LOCATION = 'locations/setLocation';
 
-const addLocation = (location) => (
-    { type: ADD_LOCATION, location }
+export const setLocation = (location) => (
+    { type: SET_LOCATION, location }
 );
 
 export const createLocation = (location) => async (dispatch) => {
@@ -34,14 +34,21 @@ export const createLocation = (location) => async (dispatch) => {
     });
 
     const data = await res.json();
-    dispatch(addLocation(data))
+    dispatch(setLocation(data))
     return data
 };
 
+export const getLocation = (locationId) => async (dispatch) => {
+    const res = await fetch(`/api/locations/${locationId}`);
+    const data = await res.json();
+    await dispatch(setLocation(data.location));
+    return data.location
+}
+
 const locationsReducer = (state = {}, action) => {
     switch (action.type) {
-        case ADD_LOCATION: {
-            return state
+        case SET_LOCATION: {
+            return { ...state, currentLocation: action.location }
         }
         default:
             return state

@@ -6,6 +6,8 @@ import SignUpFormPage from "./components/SignUpFormPage";
 import HostFormPage from "./components/HostFormPage";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import TagPage from "./components/TagPage";
+import LocationPage from "./components/LocationPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path="/host">
             <HostFormPage />
+          </Route>
+          <Route path="/tags/:tagId">
+            <TagPage />
+          </Route>
+          <Route path="/locations/:locationId">
+            <LocationPage />
           </Route>
         </Switch>
       )}
