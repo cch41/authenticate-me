@@ -37,7 +37,7 @@ const LocationPage = () => {
                             <div key={i}>{review.content}</div>
                         ))}
                     </div>
-                    <BookingForm />
+                    <BookingForm locationId={location.id}/>
                 </>
             }
         </>

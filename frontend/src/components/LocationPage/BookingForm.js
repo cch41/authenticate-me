@@ -1,20 +1,37 @@
 import { useState, useEffect } from 'react';
 import './LocationPage.css';
 import addDays from 'date-fns/addDays';
+import { useDispatch, useSelector } from 'react-redux';
+import { createBooking } from '../../store/booking';
 
-const BookingForm = ({ location }) => {
+const BookingForm = ({ locationId }) => {
     const getMinMaxDate = () => {
         let [month, day, year] = new Date().toLocaleDateString("en-US").split("/");
         if (month < 10) {
             month = `0${month}`
         }
         if (day < 10) {
-            day = `0${month}`
+            day = `0${day}`
         }
         const minDate = `${year}-${month}-${day}`;
         const maxYear = Number(year) + 1;
         const maxDate = `${maxYear}-${month}-${day}`;
         return [minDate, maxDate]
+    }
+
+    const dateFormat = (date) => {
+        let year = date.getFullYear();
+        let month = Number(date.getMonth());
+        let day = Number(date.getDate());
+
+        if (month < 10) {
+            month = `0${month}`
+        }
+        if (day < 10) {
+            day = `0${day}`
+        }
+
+        return `${year}-${month}-${day}`
     }
 
     const checkOutMinCalc = () => {
@@ -31,28 +48,41 @@ const BookingForm = ({ location }) => {
         return res
     }
 
+    const dispatch = useDispatch();
+    const userId = useSelector(state => state.session.user.id);
     const [guests, setGuests] = useState(1);
     const [minDate, maxDate] = getMinMaxDate();
     const [checkIn, setCheckIn] = useState(minDate);
-    const [checkOutMin, setCheckOutMin] = useState(checkOutMinCalc());
-    const [checkOutMax, setCheckOutMax] = useState(checkOutMaxCalc());
+    const [checkOutMin, setCheckOutMin] = useState(minDate);
+    const [checkOutMax, setCheckOutMax] = useState(maxDate);
     const [checkOut, setCheckOut] = useState(checkOutMin);
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
-        console.log(checkOutMax)
-        setCheckOutMin(checkOutMinCalc())
-        setCheckOutMax(checkOutMaxCalc())
-        console.log(checkOutMax)
+        // recalculate the min
+        const newMinDate = checkOutMinCalc();
+        const formattedMinDate = dateFormat(newMinDate);
+        setCheckOutMin(formattedMinDate);
+
+        // recalculate the max
+        const newMaxDate = checkOutMaxCalc();
+        const formattedMaxDate = dateFormat(newMaxDate);
+        setCheckOutMax(formattedMaxDate);
     }, [checkIn])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submitted');
+        const formValues = { guests, checkIn, checkOut, userId, locationId };
+
+        dispatch(createBooking(formValues))
+            .then(() => setMessage('Booking request sent to host!'))
+            .catch(() => setMessage('Submission failed, please try again'));
     }
 
     return (
         <>
             <form className="booking-form" onSubmit={handleSubmit}>
+                <div className="booking-submission-message">{message}</div>
                 <label htmlFor="check-in">Check in</label>
                 <input type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)} min={minDate} max={maxDate}></input>
                 <label htmlFor="check-out">Check out</label>
@@ -70,7 +100,7 @@ const BookingForm = ({ location }) => {
                     <option value={9} >9 guests</option>
                     <option value={10} >10 guests</option>
                 </select>
-                <button className="book-button" type="submit">Book</button>
+                <button className="book" type="submit">Book</button>
             </form>
         </>
     );

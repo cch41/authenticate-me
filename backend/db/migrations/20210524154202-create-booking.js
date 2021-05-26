@@ -8,9 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      date: {
+      guests: {
         allowNull: false,
-        type: Sequelize.DATEONLY
+        type: Sequelize.INTEGER
+      },
+      checkIn: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      checkOut: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       userId: {
         allowNull: false,
