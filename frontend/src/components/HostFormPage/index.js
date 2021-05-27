@@ -5,14 +5,10 @@ import './HostForm.css';
 import { Multiselect } from 'multiselect-react-dropdown'
 import { createLocation } from '../../store/location';
 import { useHistory } from 'react-router-dom';
+import { editLocation } from '../../store/location';
 
-// create host form (essentially creating a location)
-// add aws3
-// add address handling
-// handle error validation
-// add redux
 
-const HostForm = () => {
+const HostForm = ({ location }) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
@@ -26,8 +22,52 @@ const HostForm = () => {
     const [country, setCountry] = useState('');
     const [zipcode, setZipcode] = useState('');
     const [errors, setErrors] = useState([]);
+    const [isNew, setIsNew] = useState(true);
+    const [message, setMessage] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
+
+    const checkIfUpdate = () => {
+        if (location) {
+            setIsNew(false);
+            if (location.name) {
+                setName(location.name)
+            }
+            if (location.price) {
+                setPrice(location.price)
+            }
+            if (location.description) {
+                setDescription(location.description)
+            }
+            if (location.address) {
+                setAddress(location.address)
+            }
+            if (location.unit) {
+                setUnit(location.unit)
+            }
+            if (location.city) {
+                setCity(location.city)
+            }
+            if (location.state) {
+                setState(location.state)
+            }
+            if (location.zipcode) {
+                setZipcode(location.zipcode)
+            }
+            if (location.country) {
+                setCountry(location.country)
+            }
+        } else return
+    }
+
+    useEffect(() => {
+        checkIfUpdate();
+    }, []);
 
     useEffect(async () => {
         const res = await fetch('/api/tags');
@@ -38,14 +78,8 @@ const HostForm = () => {
     const user = useSelector(state => state.session.user);
     if (!user) return <Redirect to='/signup' />;
 
-    const updateFile = (e) => {
-        const file = e.target.files[0];
-        if (file) setImage(file);
-    };
-
     const onSubmit = (e) => {
         e.preventDefault();
-
         const formValues = {
             name,
             price,
@@ -61,13 +95,24 @@ const HostForm = () => {
             userId: user.id
         };
 
-        return dispatch(createLocation(formValues))
-            .then(() => history.push('/'))
-            .then(() => window.alert('Host location submitted successfully'))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors([...errors, data.errors]);
-            })
+        if (isNew) {
+            return dispatch(createLocation(formValues))
+                .then(() => history.push('/'))
+                .then(() => window.alert('Host location submitted successfully'))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors([...errors, data.errors]);
+                })
+        } else {
+            return dispatch(editLocation({ ...formValues, locationId: location.id }))
+            .then(() => setMessage('Location updated successfully!'))
+            .then(() => setErrors([]))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors([...errors, data.errors]);
+                })
+        }
+
     }
 
     return (
@@ -75,6 +120,7 @@ const HostForm = () => {
             <ul>
                 {errors.map((error, i) => <li key={i}>{error}</li>)}
             </ul>
+            {message && <div className="booking-submission-message">{message}</div>}
             <p className="note"><em>* = required field</em></p>
 
             <label htmlFor="name">Name*</label>
@@ -107,7 +153,7 @@ const HostForm = () => {
                 required
             ></textarea>
             <label htmlFor="image">Image*</label>
-            <input name="image" type="file" onChange={updateFile} required />
+            <input name="image" type="file" onChange={updateFile} />
 
             <label className="full-field">
                 <span className="form-label">Address*</span>
@@ -132,7 +178,7 @@ const HostForm = () => {
                 <span className="form-label">State/Province*</span>
                 <input id="state" name="state" value={state} onChange={(e) => setState(e.target.value)} required />
             </label>
-            <label className="slim-field-right" for="zip_code">
+            <label className="slim-field-right" htmlFor="zip_code">
                 <span className="form-label">ZIP Code*</span>
                 <input id="zipcode" name="zipcode" value={zipcode} onChange={(e) => setZipcode(e.target.value)} required />
             </label>
@@ -140,7 +186,7 @@ const HostForm = () => {
                 <span className="form-label">Country/Region*</span>
                 <input id="country" name="country" value={country} onChange={(e) => setCountry(e.target.value)} required />
             </label>
-            <button type="submit" disabled={false}>HOST</button>
+            <button type="submit">HOST</button>
         </form>
     );
 }

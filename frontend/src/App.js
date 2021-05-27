@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import TagPage from "./components/TagPage";
 import LocationPage from "./components/LocationPage";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignUpFormPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage />
           </Route>
           <Route path="/host">
             <HostFormPage />
