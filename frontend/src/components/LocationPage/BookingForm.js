@@ -34,20 +34,6 @@ const BookingForm = ({ locationId }) => {
         return `${year}-${month}-${day}`
     }
 
-    const checkOutMinCalc = () => {
-        // add 1 day to the check in day
-        let [year, month, day] = checkIn.split('-');
-        const res = addDays(new Date(year, month, day), 1);
-        return res
-    }
-
-    const checkOutMaxCalc = () => {
-        // calc 10 days from the check in day
-        let [year, month, day] = checkIn.split('-');
-        const res = addDays(new Date(year, month, day), 10);
-        return res
-    }
-
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user.id);
     const [guests, setGuests] = useState(1);
@@ -60,11 +46,23 @@ const BookingForm = ({ locationId }) => {
 
     useEffect(() => {
         // recalculate the min
+        const checkOutMinCalc = () => {
+            // add 1 day to the check in day
+            let [year, month, day] = checkIn.split('-');
+            const res = addDays(new Date(year, month, day), 1);
+            return res
+        }
         const newMinDate = checkOutMinCalc();
         const formattedMinDate = dateFormat(newMinDate);
         setCheckOutMin(formattedMinDate);
 
         // recalculate the max
+        const checkOutMaxCalc = () => {
+            // calc 10 days from the check in day
+            let [year, month, day] = checkIn.split('-');
+            const res = addDays(new Date(year, month, day), 10);
+            return res
+        }
         const newMaxDate = checkOutMaxCalc();
         const formattedMaxDate = dateFormat(newMaxDate);
         setCheckOutMax(formattedMaxDate);

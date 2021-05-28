@@ -8,11 +8,15 @@ const TagPage = () => {
     const [tag, setTag] = useState([]);
     const [locations, setLocations] = useState([]);
 
-    useEffect(async () => {
-        const res = await fetch(`/api/tags/${tagId}`);
-        const data = await res.json();
-        setTag(data.tags);
-        setLocations(data.tags.Locations);
+    useEffect(() => {
+        async function getTagData() {
+            const res = await fetch(`/api/tags/${tagId}`);
+            const data = await res.json();
+            setTag(data.tags);
+            setLocations(data.tags.Locations);
+            return
+        }
+        getTagData();
     }, [tagId])
 
     return (

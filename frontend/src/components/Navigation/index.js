@@ -16,20 +16,18 @@ const Navigation = ({ isLoaded }) => {
     } else {
         sessionLinks = (
             <>
-                <LoginFormModal />
+                <LoginFormModal  />
                 <NavLink to='/signup'>Signup</NavLink>
             </>
         );
     }
 
     return (
-        <ul>
-            <li>
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/host'>Host</NavLink>
+        <div className="nav-bar">
+                <NavLink className="home" to='/'>Home</NavLink>
+                <NavLink className="host" to='/host'>Host</NavLink>
                 { isLoaded && sessionLinks }
-            </li>
-        </ul>
+        </div>
     );
 }
 

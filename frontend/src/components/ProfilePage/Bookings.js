@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getBookings, cancelBooking, editBooking } from '../../store/booking';
+import { getBookings, cancelBooking } from '../../store/booking';
 import './ProfilePage.css';
 import BookingFormModal from '../BookingFormModal';
 
@@ -11,7 +11,7 @@ const Bookings = ({ userId }) => {
 
     useEffect(() => {
         dispatch(getBookings(userId)).then((res) => setBookings(res));
-    }, [updates]);
+    }, [updates, dispatch, userId]);
 
     const handleCancel = (e) => {
         const bookingId = e.target.value;
@@ -24,7 +24,7 @@ const Bookings = ({ userId }) => {
         <>
             {bookings.map((booking, i) => {
                 return <div key={i} className="rendered-content">
-                    <img className="picture" src={booking.Location.imageUrl} />
+                    <img className="picture" alt="booking location" src={booking.Location.imageUrl} />
                     <div className="header">Check in
                         <p>{booking.checkIn}</p>
                     </div >

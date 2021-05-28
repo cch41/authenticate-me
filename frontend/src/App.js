@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import TagPage from "./components/TagPage";
 import LocationPage from "./components/LocationPage";
 import ProfilePage from "./components/ProfilePage";
+import TheGreatWave from "./images/The_Great_Wave_off_Kanagawa.jpg"
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +20,10 @@ function App() {
 
   return isLoaded && (
     <>
-      <h1>Hello from App</h1>
+      <span className="logo">
+        <img src={TheGreatWave} alt="The_Great_Wave_off_Kanagawa" />
+        <h1>Coastal Camper</h1>
+      </span>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>

@@ -1,6 +1,19 @@
+
+.location-container > * {
+    width: 700px;
+    transform: translateY(-150px);
+}
+
 .location-information {
     height: auto;
-    /* width: 250px; */
+    width: 500px;
+}
+
+.location-picture {
+    object-fit: cover;
+    object-position: center center;
+    background-size: 100%;
+    max-width: 100%;
 }
 
 .location-description {
@@ -16,13 +29,18 @@
 }
 
 .booking-form {
-    position: sticky;
-    top: 20px;
+    background-color: whitesmoke;
+    top: 500px;
     float: right;
     width: 180px;
     display: flex;
+    margin-right: 30px;
+    position: -webkit-sticky;
+    position: sticky;
     flex-direction: column;
-    border: solid #000000 1px
+    border: solid #000000 1px;
+    height: auto;
+    z-index: 5;
 }
 
 .booking-form > input {

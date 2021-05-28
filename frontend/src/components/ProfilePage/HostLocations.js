@@ -11,7 +11,7 @@ const HostLocations = ({ userId }) => {
 
     useEffect(() => {
         dispatch(getHostLocations(userId)).then((res) => setLocations(res));
-    }, [updates]);
+    }, [updates, userId, dispatch]);
 
     const handleCancel = (e) => {
         const locationId = e.target.value;
@@ -23,7 +23,7 @@ const HostLocations = ({ userId }) => {
         <>
             {locations.map((location, i) => {
                 return <div key={i} className="rendered-content">
-                    <img className="picture" src={location.imageUrl} />
+                    <img className="picture" alt="hosted location" src={location.imageUrl} />
                     <div className="header">Name
                         <p>{location.name}</p>
                     </div >

@@ -32,47 +32,51 @@ const HostForm = ({ location }) => {
         if (file) setImage(file);
     };
 
-    const checkIfUpdate = () => {
-        if (location) {
-            setIsNew(false);
-            if (location.name) {
-                setName(location.name)
-            }
-            if (location.price) {
-                setPrice(location.price)
-            }
-            if (location.description) {
-                setDescription(location.description)
-            }
-            if (location.address) {
-                setAddress(location.address)
-            }
-            if (location.unit) {
-                setUnit(location.unit)
-            }
-            if (location.city) {
-                setCity(location.city)
-            }
-            if (location.state) {
-                setState(location.state)
-            }
-            if (location.zipcode) {
-                setZipcode(location.zipcode)
-            }
-            if (location.country) {
-                setCountry(location.country)
-            }
-        } else return
-    }
 
     useEffect(() => {
+        const checkIfUpdate = () => {
+            if (location) {
+                setIsNew(false);
+                if (location.name) {
+                    setName(location.name)
+                }
+                if (location.price) {
+                    setPrice(location.price)
+                }
+                if (location.description) {
+                    setDescription(location.description)
+                }
+                if (location.address) {
+                    setAddress(location.address)
+                }
+                if (location.unit) {
+                    setUnit(location.unit)
+                }
+                if (location.city) {
+                    setCity(location.city)
+                }
+                if (location.state) {
+                    setState(location.state)
+                }
+                if (location.zipcode) {
+                    setZipcode(location.zipcode)
+                }
+                if (location.country) {
+                    setCountry(location.country)
+                }
+            } else return
+        }
         checkIfUpdate();
-    }, []);
+    }, [location]);
 
-    useEffect(async () => {
-        const res = await fetch('/api/tags');
-        const data = await res.json();
-        setTagOptions(data.tags);
+    useEffect(() => {
+        async function getTags() {
+            const res = await fetch('/api/tags');
+            const data = await res.json();
+            setTagOptions(data.tags);
+            return
+        }
+        getTags();
     }, []);
 
     const user = useSelector(state => state.session.user);

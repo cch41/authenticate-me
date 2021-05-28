@@ -1,5 +1,16 @@
 /* TODO Add site wide styles */
 
 body {
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: "Monaco", sans-serif;
+    background-color: darkgray;
+}
+
+h1 {
+    font-style: italic;
+    color: darkblue;
+    margin-left: 10px;
+}
+
+.logo {
+    display: flex;
 }
