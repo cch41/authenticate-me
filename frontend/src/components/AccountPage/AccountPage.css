@@ -14,7 +14,7 @@
 }
 
 .show-container > * {
-    background-color: grey;
+    background-color: lightgrey;
     border: solid #000000 1px;
     width: 80px;
     height: 50px;

@@ -8,11 +8,16 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import TagPage from "./components/TagPage";
 import LocationPage from "./components/LocationPage";
-import ProfilePage from "./components/ProfilePage";
-import TheGreatWave from "./images/The_Great_Wave_off_Kanagawa.jpg"
+import AccountPage from "./components/AccountPage";
+import CovidPage from "./components/CovidPage";
+import { useHistory } from "react-router-dom";
+import HostingPage from "./components/HostingPage";
+import TripsPage from "./components/TripsPage";
+import About from "./components/About";
 
 function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -20,9 +25,8 @@ function App() {
 
   return isLoaded && (
     <>
-      <span className="logo">
-        <img src={TheGreatWave} alt="The_Great_Wave_off_Kanagawa" />
-        <h1>Coastal Camper</h1>
+      <span className="covid-message">
+        Recreate responsibly during COVID-19. Learn more <p className="covid-message here" onClick={() => history.push('/covid')}> here </p>.
       </span>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
@@ -30,11 +34,14 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
+          <Route path="/about">
+            <About />
+          </Route>
           <Route path="/signup">
             <SignUpFormPage />
           </Route>
-          <Route path="/profile">
-            <ProfilePage />
+          <Route path="/account">
+            <AccountPage />
           </Route>
           <Route path="/host">
             <HostFormPage />
@@ -44,6 +51,15 @@ function App() {
           </Route>
           <Route path="/locations/:locationId">
             <LocationPage />
+          </Route>
+          <Route path="/trips">
+            <TripsPage />
+          </Route>
+          <Route path="/hosting">
+            <HostingPage />
+          </Route>
+          <Route path="/covid">
+            <CovidPage />
           </Route>
         </Switch>
       )}

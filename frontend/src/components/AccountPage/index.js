@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import './AccountPage.css';
 
 const Account = () => {
     const user = useSelector(state => state.session.user);

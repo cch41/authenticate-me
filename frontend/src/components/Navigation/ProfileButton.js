@@ -33,19 +33,18 @@ function ProfileButton({ user }) {
     };
 
     return (
-        <>
-            <button onClick={openMenu} className="profile-button">
+        <div className="profile-container" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}>
+            <button className="profile-button">
                 <i className="fas fa-user"></i>
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li><NavLink to="/profile">Profile</NavLink></li>
-                    <li>
-                        <button onClick={logout}>Logout</button>
-                    </li>
+                    <li><span onClick={() => history.push("/account")}>Account</span></li>
+                    <li><span onClick={() => history.push("/about")}>About SurfCamp</span></li>
+                    <li className="logout" onClick={logout}>Logout</li>
                 </ul>
             )}
-        </>
+        </div>
     );
 }
 

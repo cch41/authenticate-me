@@ -1,8 +1,10 @@
 /* TODO Add site wide styles */
 
 body {
-    font-family: "Monaco", sans-serif;
-    background-color: darkgray;
+    font-family: Calibre, Helvetica, Arial, sans-serif;
+    background-color: lightgrey;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -13,4 +15,24 @@ h1 {
 
 .logo {
     display: flex;
+}
+
+span.covid-message {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: rgb(185, 185, 185);
+
+}
+
+p.covid-message.here {
+    display: inline;
+    margin-left: 3px;
+    text-decoration: underline;
+}
+
+p.covid-message.here:hover {
+    cursor: pointer;
 }

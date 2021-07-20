@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBookings, cancelBooking } from '../../store/booking';
-import './ProfilePage.css';
+import '../AccountPage/AccountPage.css';
 import BookingFormModal from '../BookingFormModal';
+import { useSelector } from 'react-redux';
 
-const Bookings = ({ userId }) => {
+const Bookings = () => {
+    const userId = useSelector(state => state.session.user.id);
     const [bookings, setBookings] = useState([]);
     const dispatch = useDispatch();
     const [updates, setUpdates] = useState(0);

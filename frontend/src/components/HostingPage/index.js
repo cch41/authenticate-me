@@ -1,13 +1,18 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getHostLocations, deleteLocation } from '../../store/location';
 import HostFormModal from '../HostFormModal';
-import './ProfilePage.css';
+import '../AccountPage/AccountPage.css';
+import './HostingPage.css';
 
-const HostLocations = ({ userId }) => {
+export default function HostingsPage() {
+    const userId = useSelector(state => state.session.user.id);
     const [locations, setLocations] = useState([]);
     const dispatch = useDispatch();
     const [updates, setUpdates] = useState(0);
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getHostLocations(userId)).then((res) => setLocations(res));
@@ -18,9 +23,13 @@ const HostLocations = ({ userId }) => {
         return dispatch(deleteLocation(locationId))
             .then(() => setUpdates(updates + 1));
     }
-    // display each booking location (name only to start) with an 'edit' and 'cancel' button next to them
+
     return (
-        <>
+        <div>
+            <div>
+            <div onClick={() => history.push('/host')} className="add-location">+ Add new location to host</div>
+            </div>
+        <div>
             {locations.map((location, i) => {
                 return <div key={i} className="rendered-content">
                     <img className="picture" alt="hosted location" src={location.imageUrl} />
@@ -42,8 +51,7 @@ const HostLocations = ({ userId }) => {
                     <button value={location.id} onClick={handleCancel}>REMOVE</button>
                 </div>
             })}
-        </>
+        </div>
+        </div>
     );
 }
-
-export default HostLocations;
