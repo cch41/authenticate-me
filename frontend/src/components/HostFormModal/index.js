@@ -7,7 +7,7 @@ function HostFormModal({ location }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>EDIT LOCATION</button>
+            <button className="edit-hosting" onClick={() => setShowModal(true)}>EDIT LOCATION</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <HostForm location={location} />

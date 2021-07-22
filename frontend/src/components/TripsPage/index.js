@@ -4,6 +4,7 @@ import { getBookings, cancelBooking } from '../../store/booking';
 import '../AccountPage/AccountPage.css';
 import BookingFormModal from '../BookingFormModal';
 import { useSelector } from 'react-redux';
+import './Bookings.css';
 
 const Bookings = () => {
     const userId = useSelector(state => state.session.user.id);
@@ -23,10 +24,10 @@ const Bookings = () => {
 
     // display each booking location (name only to start) with an 'edit' and 'cancel' button next to them
     return (
-        <>
+        <div className="bookings-container">
             {bookings.map((booking, i) => {
-                return <div key={i} className="rendered-content">
-                    <img className="picture" alt="booking location" src={booking.Location.imageUrl} />
+                return <div key={i} className="one-booking-container">
+                    <img className="booking-picture" alt="booking location" src={booking.Location.imageUrl} />
                     <div className="header">Check in
                         <p>{booking.checkIn}</p>
                     </div >
@@ -41,10 +42,10 @@ const Bookings = () => {
                         <p>{'Unapproved'}</p>
                     </div>
                     <BookingFormModal bookingId={booking.id} locationId={booking.locationId}/>
-                    <button value={booking.id} onClick={handleCancel}>CANCEL</button>
+                    <button value={booking.id} onClick={handleCancel}>CANCEL BOOKING</button>
                 </div>
             })}
-        </>
+        </div>
     );
 }
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Location, LocationTag, Review, Booking } = require('../../db/models');
+const { Location, LocationTag, Review, Booking, User } = require('../../db/models');
 
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
@@ -81,7 +81,7 @@ router.get('/users/:userId', asyncHandler(async (req, res) => {
 router.get('/:locationId(\\d+)', asyncHandler(async (req, res) => {
     const { locationId } = req.params;
     const location = await Location.findByPk(locationId, {
-        include: [Review]
+        include: [{model: Review, include: [User]}]
     })
     res.json({ location });
 }));

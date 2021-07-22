@@ -48,7 +48,7 @@ export const getLocation = (locationId) => async (dispatch) => {
     const res = await fetch(`/api/locations/${locationId}`);
     const data = await res.json();
     await dispatch(setLocation(data.location));
-    return data.location
+    return
 }
 
 export const getHostLocations = (userId) => async (dispatch) => {

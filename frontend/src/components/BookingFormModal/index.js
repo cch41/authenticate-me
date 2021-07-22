@@ -7,7 +7,7 @@ function BookingFormModal({ locationId, bookingId }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>EDIT REQUEST</button>
+            <button onClick={() => setShowModal(true)}>MODIFY BOOKING</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <BookingForm locationId={locationId} bookingId={bookingId} />

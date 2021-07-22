@@ -1,0 +1,30 @@
+div.bookings-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    margin: 50px 0px;
+    flex-direction: column;
+}
+
+div.one-booking-container {
+    border: solid #000000 1px;
+    margin: 5px 50px;
+    display: flex;
+    float: right;
+    max-width: 800px;
+    flex-direction: row;
+    font-size: auto;
+    padding: 10px 10px;
+    background-color: white;
+    align-items: center;
+}
+
+div.one-booking-container > * {
+    margin: 5px 10px;
+}
+
+img.booking-picture {
+    height: 70px;
+    width: 90px;
+}

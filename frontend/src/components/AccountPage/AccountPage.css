@@ -27,16 +27,6 @@
     float: left;
 }
 
-.rendered-content {
-    border: solid #000000 1px;
-    margin: 5px 50px;
-    display: flex;
-    float: right;
-    max-width: 800px;
-    flex-direction: row;
-    font-size: auto;
-}
-
 .profile-show {
     display: flex;
     justify-content: center;
@@ -47,18 +37,10 @@
     cursor: pointer;
 }
 
-img {
+img.account {
     max-height: 60px;
     max-width: 90px;
     align-self: center;
-}
-
-.header {
-    font-weight: bold;
-}
-
-.header > * {
-    font-weight: normal;
 }
 
 .--hidden {

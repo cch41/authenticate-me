@@ -25,30 +25,30 @@ export default function HostingsPage() {
     }
 
     return (
-        <div>
-            <div>
+        <div className="locations-page">
+        <div className="locations-container">
+            <div className="add-location-container">
             <div onClick={() => history.push('/host')} className="add-location">+ Add new location to host</div>
             </div>
-        <div>
             {locations.map((location, i) => {
-                return <div key={i} className="rendered-content">
-                    <img className="picture" alt="hosted location" src={location.imageUrl} />
-                    <div className="header">Name
+                return <div key={i} className="one-location-container">
+                    <img className="hosting-picture" alt="hosted location" src={location.imageUrl} />
+                    <div className="header name">Name
                         <p>{location.name}</p>
                     </div >
-                    <div className="header">Price
+                    <div className="header price">Price
                         <p>${location.price}/night</p>
                     </div >
-                    <div className="header">Address
+                    <div className="header address">Address
                         <p>{location.address} {location.unit}</p>
                         <p>{location.city}, {location.state} {location.zipcode}</p>
                         <p>{location.country}</p>
                     </div>
-                    <div className="header-description">Description
+                    <div className="header description">Description
                         <p>{location.description}</p>
                     </div>
                     <HostFormModal location={location} />
-                    <button value={location.id} onClick={handleCancel}>REMOVE</button>
+                    <button className="cancel" value={location.id} onClick={handleCancel}>REMOVE</button>
                 </div>
             })}
         </div>

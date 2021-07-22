@@ -11,7 +11,7 @@ export default function About() {
 			</div>
 			<div className="about-info">
 				<p className="about-desc">
-					Hi, I'm Connor Henderson, a web developer with a passion for surfing and coding. <br></br>
+					Hi, I'm Connor Henderson, a web developer who enjoys surfing and coding. <br></br>
                     This website is inspired by<a href="https://www.hipcamp.com/">HipCamp</a> and more information about the design<br></br>
                     and technologies implemented can be found in the project <a href="https://github.com/cch41/surfcamp">repo</a>.
 				</p>

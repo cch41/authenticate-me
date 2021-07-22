@@ -1,6 +1,9 @@
 .nav-bar {
     display: flex;
-    position: inherit;
+    position: sticky;
+    padding: 10px 0;
+    background-color: lightgrey;
+    top: 0px;
     height: 30px;
     width: 100%;
     align-items: center;
@@ -8,9 +11,9 @@
 }
 
 img.logo {
-    height: fit-content;
-    width: fit-content;
-    margin-left: 8%;
+    height: 60px;
+    width: 130px;
+    margin-left: 13%;
     margin-right: 10px;
 }
 
@@ -21,7 +24,7 @@ img.logo:hover {
 .nav-bar.right {
     display: flex;
     justify-content: flex-end;
-    margin-right: 8%;
+    margin-right: 13%;
     margin-left: 10px;
     width: 400px;
 
@@ -69,8 +72,12 @@ img.logo:hover {
 
 i {
     display: inline;
-    color: white;
+    color: black;
     width: 20px;
+}
+
+i.fas {
+    color: white;
 }
 
 div.profile-container {

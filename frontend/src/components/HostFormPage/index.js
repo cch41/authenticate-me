@@ -120,7 +120,8 @@ const HostForm = ({ location }) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <div className="hosting-form-container">
+        <form className="new-hosting" onSubmit={onSubmit}>
             <ul>
                 {errors.map((error, i) => <li key={i}>{error}</li>)}
             </ul>
@@ -150,7 +151,7 @@ const HostForm = ({ location }) => {
                 required
             ></input>
 
-            <label htmlFor="description">Description*</label>
+            <label htmlFor="description">Description <i>(50-1000 characters)</i>*</label>
             <textarea name="description"
                 value={description}
                 onChange={e => setDescription(e.target.value)}
@@ -190,8 +191,9 @@ const HostForm = ({ location }) => {
                 <span className="form-label">Country/Region*</span>
                 <input id="country" name="country" value={country} onChange={(e) => setCountry(e.target.value)} required />
             </label>
-            <button type="submit">HOST</button>
+            <button className="submit" type="submit">HOST</button>
         </form>
+        </div>
     );
 }
 

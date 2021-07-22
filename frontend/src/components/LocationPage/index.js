@@ -7,20 +7,16 @@ import BookingForm from './BookingForm';
 
 const LocationPage = () => {
     const { locationId } = useParams();
-    const [location, setLocation] = useState({});
-    const [reviewCount, setReviewCount] = useState(0);
+    const location = useSelector(state => state.locations.currentLocation)
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        async function getCurrentLocation() {
-            const currentLocation = await dispatch(getLocation(locationId));
-            setLocation(currentLocation);
-            setReviewCount(currentLocation.Reviews.length);
+        (async () => {
+            await dispatch(getLocation(locationId));
             setIsLoaded(true);
             return
-        }
-        getCurrentLocation();
+        })();
     }, [locationId, dispatch]);
 
     const user = useSelector(state => state.session.user);
@@ -29,27 +25,24 @@ const LocationPage = () => {
     return (
         <>
             { isLoaded &&
-                <>
-                    <BookingForm locationId={location.id} />
-                    <div className="location-container">
-                        <div className="location-picture" style={{ backgroundImage: `url(${location.imageUrl})` }}></div>
+                <div className="location-container">
+                    <img className="one-location-picture" src={location.imageUrl}/>
+                    <div className="location-booking-information">
                         <div className="location-information">
                             <div className="location-name">{location.name}</div>
                             <div className="location-address">{`${location.city}, ${location.state} (${location.country})`}</div>
                             <div className="location-description">{location.description}</div>
                             <div className="location-price">{`$${location.price}/night`}</div>
                         </div>
-                        <div className="location-reviews">
-                            <h3>{reviewCount} reviews</h3>
-                            {location.Reviews.map((review, i) => (
-                                <div key={i}>{review.content}</div>
-                            ))}
-                        </div>
+                        <BookingForm locationId={location.id} />
                     </div>
-                    <div className="booking-form-container">
-
+                    <div className="location-reviews">
+                        <h3>{location.Reviews.length} reviews</h3>
+                        {location.Reviews.map((review, i) => (
+                            <div key={i}><h5>{review.User.username}</h5><p>{review.content}</p></div>
+                        ))}
                     </div>
-                </>
+                </div>
             }
         </>
     );

@@ -17,6 +17,10 @@ const HomePage = () => {
 
     return (
         <div>
+            <div className="home-page-message">
+            <h1>Find yourself outside.</h1>
+            <h3>Discover and book tent camping, RV, parks, cabins, treehouses, <br></br>and glamping near surfing locales.</h3>
+            </div>
             {tags.map((tag, i) => (
                 <Tag key={i} tag={tag}/>
             ))}
