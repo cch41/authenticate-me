@@ -1,172 +1,173 @@
 .nav-bar {
-    display: flex;
-    position: sticky;
-    padding: 10px 0;
-    background-color: lightgrey;
-    top: 0px;
-    height: 30px;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  position: sticky;
+  padding: 10px 0;
+  background-color: lightgrey;
+  top: 0px;
+  height: 30px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
 }
 
 img.logo {
-    height: 60px;
-    width: 130px;
-    margin-left: 13%;
-    margin-right: 10px;
+  height: 60px;
+  width: 130px;
+  margin-left: 13%;
+  margin-right: 10px;
 }
 
 img.logo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .nav-bar.right {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 13%;
-    margin-left: 10px;
-    width: 400px;
-
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 13%;
+  margin-left: 10px;
+  width: 400px;
 }
 
 .nav-bar.right > * {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 5px;
-
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 5px;
 }
 
 .nav-bar > * {
-    align-items: center;
+  align-items: center;
 }
 
-
 .home {
-    justify-self: start;
-    align-self: center;
+  justify-self: start;
+  align-self: center;
 }
 
 .host {
-    align-self: right;
+  align-self: right;
 }
 
 .profile-button {
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    border: 1px solid black;
-    background-image: url("../../images/wave.jpg");
-    background-size: cover;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-image: url("../../images/wave.jpg");
+  background-size: cover;
 }
 
 .profile-button:hover {
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
 i {
-    display: inline;
-    color: black;
-    width: 20px;
+  display: inline;
+  color: black;
+  width: 20px;
 }
 
 i.fas {
-    color: white;
+  color: white;
 }
 
 div.profile-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 10px 10px;
 }
 
 ul.profile-dropdown {
-    position: absolute;
-    right: 10px;
-    top: 25px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    font-size: 12pt;
-    width: 150px;
-    animation-delay: 0;
-    animation-duration: 50s;
-    animation-iteration-count: 1;
-    transform-origin: top;
-    animation-name: drop;
-    animation-timing-function: ease-out;
-    padding: 10px 10px;
-    z-index: 4;
-    border-radius: 3px;
-    box-shadow: 0.5px 0.5px 1px 1px;
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 12pt;
+  width: 150px;
+  animation-delay: 0;
+  animation-duration: 50s;
+  animation-iteration-count: 1;
+  transform-origin: top;
+  animation-name: drop;
+  animation-timing-function: ease-out;
+  padding: 10px 10px;
+  z-index: 4;
+  border-radius: 3px;
+  box-shadow: 0.5px 0.5px 1px 1px;
 }
 
 a.user-nav {
-    text-decoration: none;
-    color: black;
-    font-size: 12pt;
+  text-decoration: none;
+  color: black;
+  font-size: 12pt;
 }
 
-a.user-nav:hover, span.about:hover {
-    text-decoration: rgb(22, 142, 197) solid underline;
+a.user-nav:hover,
+span.about:hover {
+  text-decoration: rgb(22, 142, 197) solid underline;
 }
 
 ul.profile-dropdown > li {
-    font-size: 12pt;
-    padding: 5px 5px;
+  font-size: 12pt;
+  padding: 5px 5px;
 }
 
 li > span {
-    width: fit-content;
-    height: fit-content;
-    border-bottom: 4px grey;
-    padding-bottom: 2px;
+  width: fit-content;
+  height: fit-content;
+  border-bottom: 4px grey;
+  padding-bottom: 2px;
 }
 
 li.logout {
-    text-decoration: none;
-    color: blue;
+  text-decoration: none;
+  color: blue;
 }
 
 ul.profile-dropdown > li:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 span.about:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 a.signup {
-    border-radius: 20%;
-    width: fit-content;
-    padding: 5px 10px;
-    border: 1px solid rgb(22, 142, 197);
-    background-color: rgb(22, 142, 197);
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
+  border-radius: 20%;
+  width: fit-content;
+  padding: 5px 10px;
+  border: 1px solid rgb(22, 142, 197);
+  background-color: rgb(22, 142, 197);
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 a.signup:hover {
-    border-radius: 20%;
-    border: 1px solid rgb(22, 142, 197);
-    width: fit-content;
-    padding: 5px 10px;
-    color: rgb(22, 142, 197);
-    background-color: white;
-    cursor: pointer;
-    text-decoration: none;
+  border-radius: 20%;
+  border: 1px solid rgb(22, 142, 197);
+  width: fit-content;
+  padding: 5px 10px;
+  color: rgb(22, 142, 197);
+  background-color: white;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-
 @keyframes drop {
-    0%   { transform: translateY(0); }
-    1% { transform: translateY(10px); }
+  0% {
+    transform: translateY(0);
   }
+  1% {
+    transform: translateY(10px);
+  }
+}

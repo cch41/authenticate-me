@@ -26,7 +26,8 @@ function App() {
   return isLoaded && (
     <>
       <span className="covid-message">
-        Recreate responsibly during COVID-19. Learn more <p className="covid-message here" onClick={() => history.push('/covid')}> here </p>.
+        Recreate responsibly during COVID-19. Learn more from HipCamp
+        <a className="covid-message here" target="_blank" href="https://www.hipcamp.com/journal/search/covid"> here </a>.
       </span>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (

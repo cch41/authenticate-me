@@ -27,7 +27,7 @@ span.covid-message {
 
 }
 
-p.covid-message.here {
+a.covid-message.here {
     display: inline;
     margin-left: 3px;
     text-decoration: underline;
