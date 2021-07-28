@@ -1,38 +1,37 @@
 /* TODO Add site wide styles */
 
 body {
-    font-family: Calibre, Helvetica, Arial, sans-serif;
-    background-color: lightgrey;
-    margin: 0;
-    padding: 0;
+  font-family: Calibre, Helvetica, Arial, sans-serif;
+  background-color: lightgrey;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    font-style: italic;
-    color: darkblue;
-    margin-left: 10px;
+  font-style: italic;
+  color: darkblue;
+  margin-left: 10px;
 }
 
 .logo {
-    display: flex;
+  display: flex;
 }
 
 span.covid-message {
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    background-color: rgb(185, 185, 185);
-
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: rgb(185, 185, 185);
 }
 
 a.covid-message.here {
-    display: inline;
-    margin-left: 3px;
-    text-decoration: underline;
+  display: inline;
+  margin-left: 3px;
+  text-decoration: underline;
 }
 
 p.covid-message.here:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

@@ -5,10 +5,10 @@ h2 {
 
 .home-picture {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: flex-end;
   height: 350px;
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   width: 250px;
   border-radius: 25px;
@@ -17,6 +17,7 @@ h2 {
   text-align: center;
   object-fit: cover;
   object-position: center center;
+  overflow: hidden;
 }
 
 .home-picture:hover {
@@ -34,17 +35,18 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 200px;
-  border-radius: 25px;
+  height: 22%;
+  /* padding: 10px 0; */
+  width: 100%;
+  /* border-radius: 25px; */
   font: 16pt "Helvetica Neue";
   font-weight: bold;
   color: white;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 div.home-name.idx0 {
-  background: lightgray;
+  background: grey;
 }
 
 div.home-name.idx1 {
@@ -99,7 +101,7 @@ button.search {
   width: 40px;
   display: flex;
   align-items: center;
-  background-color: rgb(22, 142, 197);
+  background-color: rgb(29, 130, 177);
 }
 
 i.fa-search {
