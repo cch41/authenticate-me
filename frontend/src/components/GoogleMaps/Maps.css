@@ -1,0 +1,17 @@
+span.map.location-info {
+  font-size: 10pt;
+  color: black;
+}
+
+img.map.location-pic {
+  height: 40px;
+  width: 55px;
+}
+
+div.map.info-container {
+  display: flex;
+}
+
+.not-clicked {
+  display: hidden;
+}

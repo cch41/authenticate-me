@@ -1,16 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import sessionReducer from './session';
-import locationsReducer from './location';
+import sessionReducer from "./session";
+import locationsReducer from "./location";
+import bookingsReducer from "./booking";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  locations: locationsReducer
+  locations: locationsReducer,
+  bookings: bookingsReducer,
 });
 
-
 // should the project directory have been '.' for npx create-react-app?
-
 
 let enhancer;
 

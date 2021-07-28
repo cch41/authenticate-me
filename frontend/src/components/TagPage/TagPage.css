@@ -1,39 +1,61 @@
 .location-picture {
-    display: flex;
-    align-items: flex-end;
-    height: 400px;
-    width: 400px;
-    object-fit: cover;
-    object-position: center center;
-    background-size: 100%;
-    max-width: 100%;
-    border-radius: 2px;
-    margin: 20px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: flex-end;
+  height: 200px;
+  width: 250px;
+  object-fit: cover;
+  object-position: center center;
+  background-size: 100%;
+  max-width: 100%;
+  border-radius: 2px;
+  margin: 20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .location-picture:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .location-information {
-    padding: 5px 6px;
-    background: whitesmoke;
-    height: 85px;
-    width: 400px;
-    font: 20px "Helvetica Neue";
-    font-weight: bold;
-    color: black;
+  padding: 5px 6px;
+  background: whitesmoke;
+  height: 85px;
+  width: 400px;
+  font: 20px "Helvetica Neue";
+  font-weight: bold;
+  color: black;
 }
 
 .location-address {
-    color: rgb(90, 90, 90);
-    font-weight: normal;
-    font-size: 16px;
+  color: rgb(90, 90, 90);
+  font-weight: normal;
+  font-size: 16px;
 }
 
 .location-reviews-price {
-    padding: 20px 0px;
-    display: flex;
-    justify-content: space-between;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.tag-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.tag-page-content {
+  display: flex;
+  width: 1000px;
+}
+
+div.tag-page-locations {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
+div.tag-page-map {
+  width: 300px;
+  height: 800px;
 }

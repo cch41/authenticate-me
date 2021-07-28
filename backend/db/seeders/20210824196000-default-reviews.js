@@ -1,36 +1,23 @@
 "use strict";
+const faker = require("faker");
+
+const reviews = (function makeReviews() {
+  const newReviews = [];
+  for (let i = 1; i < 150; i++) {
+    newReviews.push({
+      content: faker.lorem.sentence() + " " + faker.lorem.sentence(),
+      userId: Math.floor(Math.random() * 100) + 1,
+      locationId: Math.floor(Math.random() * 18) + 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  }
+  return newReviews;
+})();
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(
-      "Reviews",
-      [
-        {
-          content: "Great spot! I caught the best wave of my life here.",
-          userId: 1,
-          locationId: 3,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          content:
-            "Super windy, so the waves were larger than the forecast had anticipated.",
-          userId: 2,
-          locationId: 3,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          content:
-            "We will be returning asap, and not just because we forgot our camera here...",
-          userId: 3,
-          locationId: 3,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-      {}
-    );
+    return queryInterface.bulkInsert("Reviews", reviews, {});
   },
 
   down: (queryInterface, Sequelize) => {

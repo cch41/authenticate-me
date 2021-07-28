@@ -102,6 +102,7 @@ button.search {
   display: flex;
   align-items: center;
   background-color: rgb(29, 130, 177);
+  margin-left: -10px;
 }
 
 i.fa-search {
@@ -162,4 +163,32 @@ div.tags-inner-container {
   width: 1000px;
   display: flex;
   flex-wrap: wrap;
+}
+
+div.inputs-container {
+  display: flex;
+  width: 680px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.inputs-container > div {
+  width: fit-content;
+}
+
+label.search {
+  font-size: 12pt;
+}
+
+label.search.city + input {
+  width: 230px;
+}
+
+label.search.state + input {
+  width: 200px;
+}
+
+label.search.country + input {
+  width: 200px;
 }

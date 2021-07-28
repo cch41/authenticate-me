@@ -13,13 +13,34 @@ export default function Search() {
     <div className="search">
       <div className="search form-wrapper">
         <form className="search">
-          <div>
-            <p className="search">WHERE TO?</p>
-            <input
-              className="search"
-              name="search"
-              placeholder='Try "Honolulu" or "Nazare"...'
-            ></input>
+          <div className="inputs-container">
+            <div>
+              <label className="search city" />
+              CITY
+              <input
+                className="search city"
+                name="search"
+                placeholder="San Clemente"
+              ></input>
+            </div>
+            <div>
+              <label className="search state" />
+              STATE
+              <input
+                className="search state"
+                name="search"
+                placeholder="California"
+              ></input>
+            </div>
+            <div>
+              <label className="search country" />
+              COUNTRY
+              <input
+                className="search country"
+                name="search"
+                placeholder="United States"
+              ></input>
+            </div>
           </div>
           <button
             onMouseEnter={changeBlue}

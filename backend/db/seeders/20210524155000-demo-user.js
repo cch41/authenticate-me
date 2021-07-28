@@ -2,6 +2,18 @@
 const bcrypt = require("bcryptjs");
 const faker = require("faker");
 
+const fakeUsers = (function generateFakerUsers() {
+  let users = [];
+  for (let i = 0; i < 100; i++) {
+    users.push({
+      email: faker.internet.email(),
+      username: faker.internet.userName(),
+      hashedPassword: bcrypt.hashSync(faker.internet.password()),
+    });
+  }
+  return users;
+})();
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
@@ -12,21 +24,7 @@ module.exports = {
           username: "Demo-lition",
           hashedPassword: bcrypt.hashSync("password"),
         },
-        {
-          email: faker.internet.email(),
-          username: "FakeUser1",
-          hashedPassword: bcrypt.hashSync(faker.internet.password()),
-        },
-        {
-          email: faker.internet.email(),
-          username: "FakeUser2",
-          hashedPassword: bcrypt.hashSync(faker.internet.password()),
-        },
-        {
-          email: faker.internet.email(),
-          username: "FakeUser3",
-          hashedPassword: bcrypt.hashSync(faker.internet.password()),
-        },
+        ...fakeUsers,
       ],
       {}
     );

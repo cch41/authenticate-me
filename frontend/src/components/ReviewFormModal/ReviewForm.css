@@ -1,0 +1,18 @@
+div.recommendation {
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
+
+i.fa-thumbs-up,
+i.fa-thumbs-down {
+  color: grey;
+}
+
+i.fa-thumbs-up.--clicked {
+  color: rgb(116, 228, 97);
+}
+
+i.fa-thumbs-down.--clicked {
+  color: rgb(235, 58, 58);
+}
