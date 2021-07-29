@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import HostingPage from "./components/HostingPage";
 import TripsPage from "./components/TripsPage";
 import SearchPage from "./components/SearchPage";
+import Footer from "./components/Footer";
 import About from "./components/About";
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
             </Route>
           </Switch>
         )}
+        <Footer />
       </>
     )
   );

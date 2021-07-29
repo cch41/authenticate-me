@@ -2,7 +2,7 @@
 
 body {
   font-family: Calibre, Helvetica, Arial, sans-serif;
-  background-color: lightgrey;
+  background-color: rgb(246, 246, 246);
   margin: 0;
   padding: 0;
 }
@@ -18,12 +18,12 @@ h1 {
 }
 
 span.covid-message {
-  font-size: 12px;
+  font-size: 8pt;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  background-color: rgb(185, 185, 185);
+  height: 30px;
+  background-color: rgb(214, 214, 214);
 }
 
 a.covid-message.here {
@@ -34,4 +34,54 @@ a.covid-message.here {
 
 p.covid-message.here:hover {
   cursor: pointer;
+}
+
+div.footer-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  height: 30px;
+}
+
+div.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  border-top: 1px solid grey;
+  padding: 20px 0;
+}
+
+.fa-globe,
+.fa-fw,
+.fa-fw::before {
+  height: 30px;
+  width: 30px;
+}
+
+i#globe {
+  color: black;
+  text-align: center;
+}
+
+i#globe:hover {
+  color: darkgrey;
+}
+
+div.icon-list {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  font-size: 20px;
+}
+
+div.icon-list > a {
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+div.icon-list > a > i:hover {
+  color: darkgrey;
 }
