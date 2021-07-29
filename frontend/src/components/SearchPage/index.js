@@ -1,30 +1,31 @@
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import Location from "./Location";
+import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import Location from "../TagPage/Location";
+import { searchLocations } from "../../store/location";
 import Map from "../GoogleMaps";
 
-const TagPage = () => {
-  const { tagId } = useParams();
-  const [tag, setTag] = useState([]);
+const SearchPage = () => {
+  const { query } = useParams();
   const [locations, setLocations] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function getTagData() {
-      const res = await fetch(`/api/tags/${tagId}`);
+    async function getQueryLocations() {
+      const res = await fetch(`/api/locations/query/${query}`);
       const data = await res.json();
-      setTag(data.tags);
-      setLocations(data.tags.Locations);
+      setLocations(data.locations);
       setLoaded(true);
       return;
     }
-    getTagData();
-  }, [tagId]);
+    getQueryLocations();
+  }, []);
 
   return (
     <div className="tag-page-container">
-      <h1>{tag.name}</h1>
       <h1>{locations.length} results</h1>
       <p onClick={() => history.push("/")}>{"< "}Back</p>
       <div className="tag-page-content">
@@ -42,4 +43,4 @@ const TagPage = () => {
   );
 };
 
-export default TagPage;
+export default SearchPage;

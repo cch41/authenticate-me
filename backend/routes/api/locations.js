@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
+const { Op } = require("sequelize");
+const fetch = require("node-fetch");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const {
@@ -114,7 +116,12 @@ router.get(
     const location = await Location.findByPk(locationId, {
       include: [{ model: Review, include: [User] }],
     });
-    res.json({ location });
+
+    const weather_api_key = process.env.WEATHER_API_KEY;
+    const url = `http://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&appid=${weather_api_key}&units=imperial`;
+    const weatherData = await fetch(url);
+    const weather = await weatherData.json();
+    res.json({ location, weather });
   })
 );
 
@@ -217,5 +224,25 @@ router.post("/:locationId/reviews", (req, res) => {
   const { content, userId, recommends } = req.body;
   Review.create({ content, userId, locationId, recommends });
 });
+
+router.get(
+  "/query/:query",
+  asyncHandler(async (req, res) => {
+    const { query } = req.params;
+    const cleanQuery = query.replace("%20", " ");
+    const [city, state, country] = cleanQuery.split(",");
+    const locations = await Location.findAll({
+      where: {
+        [Op.and]: [
+          { city: { [Op.substring]: city } },
+          { state: { [Op.substring]: state } },
+          { country: { [Op.substring]: country } },
+        ],
+      },
+    });
+    console.log(locations);
+    res.json({ locations });
+  })
+);
 
 module.exports = router;

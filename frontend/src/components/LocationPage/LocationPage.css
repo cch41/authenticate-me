@@ -1,91 +1,136 @@
 div.location-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
 }
 
 .location-container > * {
-    width: 700px;
-
+  width: 700px;
 }
 
 .location-information {
-    height: fit-content;
-    width: 500px;
+  height: fit-content;
+  width: 500px;
 }
 
 div.location-container > img {
-    height: 400px;
-    width: 700px;
-
+  height: 400px;
+  width: 700px;
 }
 
 .location-description {
-    font-size: 13px;
-    padding: 5px 0px;
-    font-weight: normal;
-    height: auto;
-    overflow-wrap: break-word;
+  font-size: 13px;
+  padding: 5px 0px;
+  font-weight: normal;
+  height: auto;
+  overflow-wrap: break-word;
 }
 
 .location-price {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 .location-booking-information {
-    display: flex;
+  display: flex;
 }
 
 .booking-form {
-    background-color: rgb(22, 142, 197);
-    position: sticky;
-    top: 20px;
-    width: 180px;
-    border: solid #000000 1px;
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-    margin-left: 10px;
-    margin-top: -10px;
-    z-index: 1;
+  background-color: rgb(22, 142, 197);
+  position: sticky;
+  top: 20px;
+  width: 180px;
+  border: solid #000000 1px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin-left: 10px;
+  margin-top: -10px;
+  z-index: 1;
 }
 
 .booking-form > input {
-    margin-bottom: 5px;
-    align-self: center;
+  margin-bottom: 5px;
+  align-self: center;
 }
 
 .booking-form > * {
-    margin-left: 8px;
-    margin-right: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .booking-form > select {
-    align-self: center;
+  align-self: center;
 }
 
 .booking-submission-message {
-    padding: 2px 0px;
-    font-size: 13px;
-    font-weight: bold;
-    overflow-wrap: break-word;
-    color: white;
-    border-radius: 20%;
-    width: auto;
-    background-color: rgb(105, 195, 104);
-    text-align: center;
-    margin-left: 10px;
-    align-self: center;
+  padding: 2px 0px;
+  font-size: 13px;
+  font-weight: bold;
+  overflow-wrap: break-word;
+  color: white;
+  border-radius: 20%;
+  width: auto;
+  background-color: rgb(105, 195, 104);
+  text-align: center;
+  margin-left: 10px;
+  align-self: center;
 }
 
 button.book {
-    margin: 7px 0px;
-    height: 30px;
-    width: 70px;
-    align-self: center;
+  margin: 7px 0px;
+  height: 30px;
+  width: 70px;
+  align-self: center;
 }
 
 div.location-reviews > div {
-    margin: 5px 0;
+  margin: 5px 0;
+}
+
+div.weather-container {
+  width: 420px;
+  height: 130px;
+  margin-left: -200px;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-self: flex-start;
+}
+
+div.day:nth-child(even) {
+  background-color: rgb(22, 142, 197);
+}
+
+div.day:nth-child(odd) {
+  background-color: rgb(135, 217, 255);
+}
+
+div.day {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+div.max {
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+div.min {
+  font-size: 11pt;
+}
+
+h4.weather-desc {
+  margin-top: -50px;
+}
+
+img.icon {
+  width: 60px;
+  height: 60px;
+  justify-self: center;
 }

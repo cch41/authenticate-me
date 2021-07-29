@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function Search() {
-  function changeBlue(e) {
-    e.target.firstChild.style.color = "rgb(22, 142, 197)";
-    e.target.style.backgroundColor = "white";
-  }
-  function changeWhite(e) {
-    e.target.firstChild.style.color = "white";
-    e.target.style.backgroundColor = "rgb(22, 142, 197)";
-  }
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const history = useHistory();
+
+  const handleSubmit = () => {
+    history.push(`/search/${city},${state},${country}`);
+  };
+
   return (
     <div className="search">
       <div className="search form-wrapper">
@@ -20,7 +22,9 @@ export default function Search() {
               <input
                 className="search city"
                 name="search"
-                placeholder="San Clemente"
+                placeholder="Myrtle Beach"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               ></input>
             </div>
             <div>
@@ -29,7 +33,9 @@ export default function Search() {
               <input
                 className="search state"
                 name="search"
-                placeholder="California"
+                placeholder="South Carolina"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
               ></input>
             </div>
             <div>
@@ -39,15 +45,12 @@ export default function Search() {
                 className="search country"
                 name="search"
                 placeholder="United States"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
               ></input>
             </div>
           </div>
-          <button
-            onMouseEnter={changeBlue}
-            onMouseLeave={changeWhite}
-            type="submit"
-            className="search"
-          >
+          <button type="submit" className="search" onClick={handleSubmit}>
             <i className="fas fa-search"></i>
           </button>
         </form>

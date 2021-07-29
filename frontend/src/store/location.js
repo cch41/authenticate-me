@@ -1,8 +1,10 @@
 import { csrfFetch } from "./csrf";
 
 const SET_LOCATION = "locations/setLocation";
+const SET_WEATHER = "locations/setWeather";
 
 export const setLocation = (location) => ({ type: SET_LOCATION, location });
+export const setWeather = (weather) => ({ type: SET_WEATHER, weather });
 
 const createLocationForm = (location) => {
   const {
@@ -58,7 +60,9 @@ export const createLocation = (location) => async (dispatch) => {
 export const getLocation = (locationId) => async (dispatch) => {
   const res = await fetch(`/api/locations/${locationId}`);
   const data = await res.json();
+  console.log(data.weather);
   await dispatch(setLocation(data.location));
+  await dispatch(setWeather(data.weather));
   return;
 };
 
@@ -100,10 +104,19 @@ export const addReview =
     return;
   };
 
-const locationsReducer = (state = {}, action) => {
+export const searchLocations = (query) => async (dispatch) => {
+  const res = await csrfFetch(`/api/locations/query/${query}`);
+  const data = await res.json();
+  return data;
+};
+
+export const locationsReducer = (state = {}, action) => {
   switch (action.type) {
     case SET_LOCATION: {
       return { ...state, currentLocation: action.location };
+    }
+    case SET_WEATHER: {
+      return { ...state, weather: action.weather };
     }
     default:
       return state;

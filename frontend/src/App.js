@@ -12,6 +12,7 @@ import AccountPage from "./components/AccountPage";
 import { useHistory } from "react-router-dom";
 import HostingPage from "./components/HostingPage";
 import TripsPage from "./components/TripsPage";
+import SearchPage from "./components/SearchPage";
 import About from "./components/About";
 
 function App() {
@@ -66,6 +67,9 @@ function App() {
             </Route>
             <Route path="/hosting">
               <HostingPage />
+            </Route>
+            <Route path="/search/:query">
+              <SearchPage />
             </Route>
           </Switch>
         )}
