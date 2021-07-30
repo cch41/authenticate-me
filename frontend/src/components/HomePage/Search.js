@@ -57,7 +57,7 @@ export default function Search() {
       </div>
       <img
         className="search"
-        src="https://coastal-camper.s3.amazonaws.com/search-background.jpg"
+        src="https://coastal-camper.s3.amazonaws.com/search.png"
       ></img>
     </div>
   );

@@ -9,11 +9,26 @@
   max-width: 100%;
   border-radius: 2px;
   margin: 20px;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 4px 1px darkgrey;
+  -moz-box-shadow: 0 0 4px 1px darkgrey;
+  box-shadow: 0 0 4px 1px darkgrey;
 }
 
 .location-picture:hover {
   cursor: pointer;
+}
+
+div.results-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14pt;
+  align-self: flex-start;
+  width: 600px;
+}
+
+div.search-name > p {
+  display: inline;
+  font-weight: bold;
 }
 
 .location-information {
@@ -32,6 +47,10 @@
   font-size: 16px;
 }
 
+div.results-container {
+  width: 1000px;
+}
+
 .location-reviews-price {
   padding: 20px 0px;
   display: flex;
@@ -42,6 +61,13 @@ div.tag-page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 70px;
+}
+
+div.results-container > p {
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 2px 0;
 }
 
 div.tag-page-content {

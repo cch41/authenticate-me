@@ -5,11 +5,11 @@ body {
   background-color: rgb(246, 246, 246);
   margin: 0;
   padding: 0;
+  color: rgb(61, 61, 61);
 }
 
 h1 {
-  font-style: italic;
-  color: darkblue;
+  color: rgb(61, 61, 61);
   margin-left: 10px;
 }
 
@@ -18,12 +18,14 @@ h1 {
 }
 
 span.covid-message {
-  font-size: 8pt;
+  font-size: 10pt;
+  color: rgb(14, 6, 37);
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  background-color: rgb(214, 214, 214);
+  height: 35px;
+  background-color: rgb(228, 227, 227);
 }
 
 a.covid-message.here {
@@ -39,7 +41,7 @@ p.covid-message.here:hover {
 div.footer-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 50px;
   height: 30px;
 }
@@ -47,41 +49,31 @@ div.footer-container {
 div.footer-content {
   display: flex;
   justify-content: space-between;
-  width: 800px;
+  width: 1000px;
   border-top: 1px solid grey;
   padding: 20px 0;
 }
 
-.fa-globe,
-.fa-fw,
-.fa-fw::before {
+img.link {
+  color: darkgrey;
   height: 30px;
   width: 30px;
 }
 
-i#globe {
-  color: black;
-  text-align: center;
-}
-
-i#globe:hover {
-  color: darkgrey;
-}
-
 div.icon-list {
+  width: 150px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
-  width: 120px;
-  font-size: 20px;
 }
 
 div.icon-list > a {
   text-decoration: none;
-  color: white;
+  color: black;
   transition: 0.2s;
   transition-timing-function: ease-in-out;
 }
 
-div.icon-list > a > i:hover {
+img.link:hover {
   color: darkgrey;
 }

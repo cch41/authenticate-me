@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Location from "./Location";
 import Map from "../GoogleMaps";
+import ResultsBar from "./ResultsBar";
 
 const TagPage = () => {
   const { tagId } = useParams();
   const [tag, setTag] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [displayed, setDisplayed] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const history = useHistory();
 
   useEffect(() => {
     async function getTagData() {
@@ -24,9 +25,11 @@ const TagPage = () => {
 
   return (
     <div className="tag-page-container">
-      <h1>{tag.name}</h1>
-      <h1>{locations.length} results</h1>
-      <p onClick={() => history.push("/")}>{"< "}Back</p>
+      <ResultsBar
+        search={tag.name}
+        displayed={displayed}
+        results={locations.length}
+      />
       <div className="tag-page-content">
         {loaded && !locations.length && <p>No results found.</p>}
         <div className="tag-page-locations">

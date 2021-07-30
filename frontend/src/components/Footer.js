@@ -1,5 +1,8 @@
 import React from "react";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import github from "../images/profile/github.png";
+import linkedIn from "../images/profile/linkedIn.jpeg";
+import angelList from "../images/profile/angel_list.png";
+import website from "../images/profile/website.png";
 
 export default function Footer() {
   return (
@@ -8,20 +11,20 @@ export default function Footer() {
         <div className="footer-message">Developed by Connor Henderson</div>
         <div className="footer-links">
           <div className="icon-list">
-            <a href="https://github.com/cch41" target="_blank">
-              <i className="fab fa-fw fa-github"></i>
+            <a target="_blank" href="https://github.com/cch41/board_games">
+              <img className="link" src={github} alt="Github" />
             </a>
             <a
-              href="https://www.linkedin.com/in/connor-henderson-833504123/"
               target="_blank"
+              href="https://www.linkedin.com/in/connor-henderson-833504123/"
             >
-              <i className="fab fa-fw fa-linkedin-in"></i>
+              <img className="link" src={linkedIn} alt="LinkedIn" />
             </a>
-            <a href="https://angel.co/u/connor-henderson-2" target="_blank">
-              <i className="fab fa-fw fa-angellist"></i>
+            <a target="_blank" href="https://angel.co/u/connor-henderson-2">
+              <img className="link" src={angelList} alt="Angel List" />
             </a>
-            <a href="https://cch41.github.io/" target="_blank">
-              <i id="globe" class="fas fa-solid fa-globe"></i>
+            <a target="_blank" href="https://cch41.github.io/">
+              <img className="link" src={website} alt="personal website" />
             </a>
           </div>
         </div>
