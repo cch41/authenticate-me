@@ -49,6 +49,14 @@ const validateLocationNew = [
   handleValidationErrors,
 ];
 
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const locations = await Location.findAll();
+    res.json({ locations });
+  })
+);
+
 router.post(
   "/",
   singleMulterUpload("image"),

@@ -102,23 +102,32 @@ ul.profile-dropdown {
   padding: 10px 10px;
   z-index: 4;
   border-radius: 3px;
-  box-shadow: 0.5px 0.5px 1px 1px;
+  -webkit-box-shadow: 0 0 4px 1px darkgrey;
+  -moz-box-shadow: 0 0 4px 1px darkgrey;
+  box-shadow: 0 0 4px 1px darkgrey;
 }
 
 a.user-nav {
   text-decoration: none;
-  color: black;
+  color: rgb(61, 61, 61);
   font-size: 12pt;
+  border-bottom: 2px solid rgb(246, 246, 246);
 }
 
 a.user-nav:hover,
 span.about:hover {
-  text-decoration: rgb(22, 142, 197) solid underline;
+  /* text-decoration: rgb(22, 142, 197) solid underline; */
+  border-bottom: 2px solid rgb(22, 142, 197);
+  transition-timing-function: ease;
+  -webkit-transition-duration: 0.2s;
 }
 
 ul.profile-dropdown > li {
   font-size: 12pt;
   padding: 5px 5px;
+  text-decoration: underline;
+  text-decoration-color: darkgrey;
+  color: rgb(61, 61, 61);
 }
 
 li > span {

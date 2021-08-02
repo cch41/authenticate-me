@@ -5,7 +5,7 @@ h2 {
 
 .home-picture {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: flex-end;
   height: 430px;
   background-size: contain;
@@ -19,6 +19,18 @@ h2 {
   overflow: hidden;
 }
 
+.home-picture-city {
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 310px;
+  border-radius: 25px;
+  object-fit: cover;
+  overflow: hidden;
+  height: 310px;
+  margin-bottom: 10px;
+}
+
+.home-picture-city:hover,
 .home-picture:hover {
   cursor: pointer;
   -webkit-box-shadow: 0 0 5px 2px darkgrey;
@@ -37,14 +49,22 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 22%;
-  /* padding: 10px 0; */
   width: 100%;
-  /* border-radius: 25px; */
   font: 16pt "Helvetica Neue";
   font-weight: bold;
   color: white;
-  /* margin-bottom: 20px; */
+}
+
+div.tag-title {
+  font-size: 20pt;
+}
+
+div.tag-phrase {
+  font-size: 14pt;
+  font-weight: normal;
+  padding-top: 5px;
 }
 
 div.home-name.idx0 {
@@ -87,6 +107,8 @@ div.home-page-message > h3 {
   justify-content: center;
   text-align: center;
   margin-top: 0;
+  font-size: 18pt;
+  font-weight: none;
 }
 
 div.search {
@@ -173,12 +195,62 @@ div.home-page {
   align-items: center;
 }
 
-div.tags-outer-container {
+div.tags-outer-container,
+div.city-outer-container,
+div.decoration-outer-container {
   width: 1000px;
   margin-top: 30px;
 }
 
-div.tags-inner-container {
+div.decoration-outer-container.stars {
+  background-image: url("https://coastal-camper.s3.amazonaws.com/stars.png");
+  height: 500px;
+  width: 1000px;
+  background-repeat: no-repeat;
+  border-radius: 25px;
+  object-fit: cover;
+  object-position: center center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.decoration-outer-container.stars > div {
+  background-color: rgb(124, 78, 155);
+  color: white;
+  font-weight: bold;
+  border-radius: 25px;
+  margin: 20px 20px;
+  padding: 20px 20px;
+  width: 300px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.stars {
+  font-size: 15pt;
+}
+p.stars {
+  font-size: 12pt;
+}
+button.stars {
+  color: rgb(124, 78, 155);
+  background-color: white;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+  padding: 10px 15px;
+  border: none;
+  font-size: 12pt;
+}
+
+div.tags-inner-container,
+div.city-inner-container,
+div.decoration-inner-container {
   width: 1000px;
   display: flex;
   flex-wrap: wrap;
@@ -209,4 +281,20 @@ label.search.state + input {
 
 label.search.country + input {
   width: 200px;
+}
+
+div.location-name {
+  width: 310px;
+  margin-bottom: 1px;
+  cursor: pointer;
+}
+
+div.city {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+div.city-name {
+  margin-bottom: 20px;
 }
