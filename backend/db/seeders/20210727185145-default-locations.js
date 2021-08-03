@@ -27,7 +27,7 @@ module.exports = {
       "Locations",
       [
         {
-          name: "Pipline / Ehukai Beach",
+          name: "Pipeline / Ehukai Beach",
           price: Math.floor(Math.random() * 100) + 10,
           imageUrl: "https://coastal-camper.s3.amazonaws.com/waves.jpg",
           address: "59-337 Ke Nui Rd",
