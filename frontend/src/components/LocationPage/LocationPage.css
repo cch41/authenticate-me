@@ -6,21 +6,25 @@ div.location-container {
 }
 
 .location-container > * {
-  width: 700px;
+  width: 800px;
 }
 
 .location-information {
   height: fit-content;
-  width: 500px;
+  width: 550px;
+}
+
+.location-address {
+  font-size: 13pt;
 }
 
 div.location-container > img {
-  height: 400px;
-  width: 700px;
+  height: 500px;
+  width: 800px;
 }
 
 .location-description {
-  font-size: 13px;
+  font-size: 12pt;
   padding: 5px 0px;
   font-weight: normal;
   height: auto;
@@ -29,23 +33,25 @@ div.location-container > img {
 
 .location-price {
   padding-top: 10px;
+  text-align: right;
+  margin-bottom: 20px;
 }
 
 .location-booking-information {
   display: flex;
 }
 
-.booking-form {
-  background-color: rgb(22, 142, 197);
+div.booking-form {
+  background-color: white;
   position: sticky;
   top: 20px;
-  width: 180px;
-  border: solid #000000 1px;
+  width: 260px;
+  border: solid lightgrey 0.5px;
   display: flex;
   flex-direction: column;
-  height: 200px;
-  margin-left: 10px;
-  margin-top: -10px;
+  height: 240px;
+  margin-left: 60px;
+  margin-top: -20px;
   z-index: 1;
 }
 
@@ -55,8 +61,7 @@ div.location-container > img {
 }
 
 .booking-form > * {
-  margin-left: 8px;
-  margin-right: 8px;
+  padding: 8px 8px;
 }
 
 .booking-form > select {
@@ -84,53 +89,167 @@ button.book {
   align-self: center;
 }
 
+div.location-reviews {
+  width: 600px;
+  justify-self: flex-start;
+  margin-left: -200px;
+}
+
 div.location-reviews > div {
   margin: 5px 0;
 }
 
 div.weather-container {
-  width: 420px;
-  height: 130px;
+  width: 450px;
+  height: 280px;
   margin-left: -200px;
   margin-top: -10px;
   margin-bottom: 20px;
+  border-radius: 25px;
   display: flex;
+  flex-direction: column;
   justify-self: flex-start;
+  background-image: url("https://coastal-camper.s3.amazonaws.com/weather.png");
+  background-size: contain;
 }
 
-div.day:nth-child(even) {
+div.today {
+  display: flex;
+  border-bottom: 1px solid darkgrey;
+  height: 100px;
+  font-weight: bold;
+  margin-top: -5px;
+  color: black;
+}
+
+div.forecast-container {
+  display: flex;
+  height: 180px;
+  justify-content: space-around;
+}
+
+div.day-name {
+  font-weight: bold;
+  color: black;
+}
+
+/* div.day:nth-child(even) {
   background-color: rgb(22, 142, 197);
 }
 
 div.day:nth-child(odd) {
   background-color: rgb(135, 217, 255);
-}
+} */
 
 div.day {
   width: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: space-around;
   text-align: center;
-  padding: 10px 0px;
+  padding-bottom: 10px;
 }
 
 div.max {
   font-weight: bold;
   font-size: 12pt;
+  color: black;
 }
 
 div.min {
   font-size: 11pt;
+  font-weight: bold;
+  color: rgb(46, 46, 46);
 }
 
 h4.weather-desc {
-  margin-top: -50px;
+  margin-top: -30px;
 }
 
 img.icon {
   width: 60px;
   height: 60px;
   justify-self: center;
+}
+
+div.today > * {
+  border: none;
+}
+
+div.today > img.icon {
+  width: 90px;
+  height: 90px;
+}
+
+div.today.section {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+div.second {
+  margin-top: 10px;
+}
+
+div.max.today-temp {
+  font-size: 15pt;
+}
+
+div.min.today-temp {
+  font-size: 14pt;
+}
+
+div.today.section.text {
+  font-size: 15pt;
+  justify-content: flex-start;
+  margin-top: 15px;
+  margin-right: -10px;
+  margin-left: 30px;
+}
+
+div.price {
+  font-weight: bold;
+  font-size: 15pt;
+  color: black;
+}
+
+div.price-container {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 11pt;
+  border-bottom: 0.5px solid lightgrey;
+  color: grey;
+}
+div.dates {
+  height: 60px;
+  width: 233.3px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11pt;
+  border-bottom: 0.5px solid lightgrey;
+  padding: 0;
+}
+
+div.dates > div {
+  color: black;
+  font-weight: bold;
+  border-right: 0.5px solid lightgrey;
+  width: %;
+  height: 60px;
+}
+
+div.dates > div > input {
+  width: 100px;
+  margin-top: 2px;
+}
+
+form.booking-form {
+  padding: 0;
+  border: none;
+  height: 100%;
 }

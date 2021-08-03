@@ -283,10 +283,14 @@ label.search.country + input {
   width: 200px;
 }
 
-div.location-name {
+div.location-name.home {
   width: 310px;
   margin-bottom: 1px;
   cursor: pointer;
+}
+
+h3.list {
+  margin-bottom: 5px;
 }
 
 div.city {

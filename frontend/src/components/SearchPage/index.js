@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Location from "../TagPage/Location";
+import ResultsBar from "../TagPage/ResultsBar";
 import { searchLocations } from "../../store/location";
 import Map from "../GoogleMaps";
 
@@ -12,6 +13,19 @@ const SearchPage = () => {
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  function formatQuery(query) {
+    const [city, state, country] = query.split(",");
+    let formatted = "";
+
+    if (city && state) formatted += `${city}, ${state}`;
+    else if (city) formatted += `${city}`;
+    else if (city) formatted += `${state}`;
+
+    if (country) formatted += ` (${country})`;
+    return formatted;
+  }
+  const formattedQuery = formatQuery(query);
 
   useEffect(() => {
     async function getQueryLocations() {
@@ -26,8 +40,7 @@ const SearchPage = () => {
 
   return (
     <div className="tag-page-container">
-      <h1>{locations.length} results</h1>
-      <p onClick={() => history.push("/")}>{"< "}Back</p>
+      <ResultsBar search={formattedQuery} results={locations.length} />
       <div className="tag-page-content">
         {loaded && !locations.length && <p>No results found.</p>}
         <div className="tag-page-locations">

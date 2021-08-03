@@ -17,6 +17,7 @@ const TagPage = () => {
       const data = await res.json();
       setTag(data.tags);
       setLocations(data.tags.Locations);
+      console.log(data.tags.Locations[0]);
       setLoaded(true);
       return;
     }

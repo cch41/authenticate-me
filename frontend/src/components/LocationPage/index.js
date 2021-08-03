@@ -33,9 +33,9 @@ const LocationPage = () => {
               <div className="location-name">{location.name}</div>
               <div className="location-address">{`${location.city}, ${location.state} (${location.country})`}</div>
               <div className="location-description">{location.description}</div>
-              <div className="location-price">{`$${location.price}/night`}</div>
+              {/* <div className="location-price">{`$${location.price}/night`}</div> */}
             </div>
-            <BookingForm locationId={location.id} />
+            <BookingForm locationId={location.id} price={location.price} />
           </div>
           <Weather city={location.city} state={location.state} />
           <div className="location-reviews">

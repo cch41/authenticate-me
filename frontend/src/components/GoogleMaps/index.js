@@ -46,11 +46,11 @@ const Map = ({ locations }) => {
     // Important! Always set the container height explicitly
 
     <div className="map_page__container">
-      <div style={{ height: "600px", width: "400px" }}>
+      <div style={{ height: "900px", width: "300px" }}>
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={containerStyle}
-            zoom={6}
+            zoom={5}
             center={locations.length ? locationsPos : presetPos}
             onUnmount={onUnmount}
           >
@@ -77,10 +77,7 @@ const Map = ({ locations }) => {
                 >
                   <div className="map info-container">
                     <img className="map location-pic" src={location.imageUrl} />
-                    <div>
-                      <div className="map location-info">{location.name}</div>
-                      <div className="map location-info">{location.name}</div>
-                    </div>
+                    <div className="map location-info">{location.name}</div>
                   </div>
                 </InfoWindow>
               </>

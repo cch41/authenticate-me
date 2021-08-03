@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-export default function ResultsBar({ search, displayed, results }) {
+export default function ResultsBar({ search, results }) {
   const history = useHistory();
 
   return (
@@ -12,7 +12,7 @@ export default function ResultsBar({ search, displayed, results }) {
             Showing results for <p>{search}</p>:
           </div>
           <div className="results-count">
-            1-{displayed} of {results}
+            {results ? 1 : 0}-{results} of {results}
           </div>
         </div>
         <div style={{ width: "400px" }}></div>

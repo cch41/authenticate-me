@@ -1,6 +1,8 @@
-span.map.location-info {
+div.map.location-info {
   font-size: 10pt;
-  color: black;
+  color: rgb(61, 61, 61);
+  font-weight: bold;
+  padding-top: 3px;
 }
 
 img.map.location-pic {
@@ -10,8 +12,14 @@ img.map.location-pic {
 
 div.map.info-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .not-clicked {
   display: hidden;
+}
+
+.map_page__container {
+  height: 100%;
 }

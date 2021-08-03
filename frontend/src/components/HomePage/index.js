@@ -35,7 +35,6 @@ const HomePage = () => {
         </h3>
       </div>
       <Search />
-      {/* <Box1 /> */}
       <div className="tags-outer-container">
         <h3>Discover new places</h3>
         <div className="tags-inner-container">
@@ -73,11 +72,11 @@ const HomePage = () => {
         </div>
       </div>
       <div className="decoration-outer-container">
-        <h3>Beaches, parks, and campgrounds</h3>
+        <h3 className="list">Beaches, parks, and campgrounds</h3>
         <div className="decoration-inner-container">
           {locations.map((location, i) => (
             <div
-              className="location-name"
+              className="location-name home"
               onClick={() => history.push(`/locations/${location.id}`)}
             >
               {location.name}

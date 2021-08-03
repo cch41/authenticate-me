@@ -1,21 +1,23 @@
 .location-picture {
   display: flex;
   align-items: flex-end;
-  height: 200px;
-  width: 250px;
+  height: 280px;
+  width: 350px;
   object-fit: cover;
   object-position: center center;
   background-size: 100%;
   max-width: 100%;
   border-radius: 2px;
-  margin: 20px;
+  margin-left: 25px;
+  margin-bottom: 25px;
   -webkit-box-shadow: 0 0 4px 1px darkgrey;
   -moz-box-shadow: 0 0 4px 1px darkgrey;
   box-shadow: 0 0 4px 1px darkgrey;
+  cursor: pointer;
 }
 
-.location-picture:hover {
-  cursor: pointer;
+.location-picture:hover > .location-information {
+  background: rgb(228, 227, 227);
 }
 
 div.results-bar {
@@ -23,7 +25,7 @@ div.results-bar {
   justify-content: space-between;
   font-size: 14pt;
   align-self: flex-start;
-  width: 600px;
+  width: 800px;
 }
 
 div.search-name > p {
@@ -34,11 +36,13 @@ div.search-name > p {
 .location-information {
   padding: 5px 6px;
   background: whitesmoke;
-  height: 85px;
+  height: 130px;
   width: 400px;
   font: 20px "Helvetica Neue";
   font-weight: bold;
   color: black;
+  display: flex;
+  flex-direction: column;
 }
 
 .location-address {
@@ -47,14 +51,22 @@ div.search-name > p {
   font-size: 16px;
 }
 
+div.location-name {
+  width: 100%;
+}
+
 div.results-container {
-  width: 1000px;
+  width: 1200px;
+}
+
+div.results-container > p {
+  margin-bottom: 30px;
 }
 
 .location-reviews-price {
-  padding: 20px 0px;
+  padding-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 div.tag-page-container {
@@ -72,16 +84,29 @@ div.results-container > p {
 
 div.tag-page-content {
   display: flex;
-  width: 1000px;
+  width: 1200px;
+}
+
+div.tag-page-content > p {
+  font-size: 20pt;
+  font-weight: bold;
+  width: 400px;
 }
 
 div.tag-page-locations {
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
+  width: 800px;
+  height: fit-content;
+  margin-top: 10px;
 }
 
 div.tag-page-map {
   width: 300px;
-  height: 800px;
+  height: 900px;
+}
+
+div.tag-page-map {
+  position: sticky;
+  top: 150px;
 }
