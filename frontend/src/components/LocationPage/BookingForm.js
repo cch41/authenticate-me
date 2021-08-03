@@ -121,7 +121,7 @@ const BookingForm = ({ locationId, price }) => {
             <option value={10}>10 guests</option>
           </select>
         </div>
-        <div className="submit">
+        <div className="submit-booking">
           <button className="book" type="submit">
             Instant book
           </button>

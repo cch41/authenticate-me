@@ -16,7 +16,6 @@ const Weather = ({ city, state }) => {
 
   if (!weather) return;
 
-  console.log(weather);
   return (
     <>
       <div className="weather-container">

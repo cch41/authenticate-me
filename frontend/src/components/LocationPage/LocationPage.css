@@ -23,6 +23,14 @@ div.location-container > img {
   width: 800px;
 }
 
+div.location-information {
+  border-bottom: 1px solid lightgray;
+}
+
+div.location-description {
+  margin: 20px 0;
+}
+
 .location-description {
   font-size: 12pt;
   padding: 5px 0px;
@@ -43,25 +51,20 @@ div.location-container > img {
 
 div.booking-form {
   background-color: white;
-  position: sticky;
-  top: 20px;
-  width: 260px;
+  width: 300px;
   border: solid lightgrey 0.5px;
   display: flex;
   flex-direction: column;
-  height: 240px;
+  height: 280px;
   margin-left: 60px;
   margin-top: -20px;
   z-index: 1;
+  box-shadow: 0px 0px 3px lightgrey;
 }
 
 .booking-form > input {
   margin-bottom: 5px;
   align-self: center;
-}
-
-.booking-form > * {
-  padding: 8px 8px;
 }
 
 .booking-form > select {
@@ -96,15 +99,31 @@ div.location-reviews {
 }
 
 div.location-reviews > div {
-  margin: 5px 0;
+  margin: 35px 0;
+}
+
+div.location-recommends > i {
+  color: rgb(63, 168, 45);
+}
+
+div.location-recommends > span:nth-child(even) {
+  /* margin-left: 5px; */
+  font-size: 13pt;
+  color: rgb(63, 168, 45);
+}
+
+div.location-recommends > span:nth-child(odd) {
+  margin-left: 10px;
+  font-size: 13pt;
+  color: rgb(46, 46, 46);
 }
 
 div.weather-container {
   width: 450px;
   height: 280px;
-  margin-left: -200px;
-  margin-top: -10px;
-  margin-bottom: 20px;
+  margin-left: -300px;
+  margin-top: -30px;
+  margin-bottom: 30px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -217,7 +236,7 @@ div.price {
 }
 
 div.price-container {
-  height: 60px;
+  height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,11 +244,17 @@ div.price-container {
   border-bottom: 0.5px solid lightgrey;
   color: grey;
 }
+
+div.price-container > * {
+  padding-left: 13px;
+}
+
 div.dates {
-  height: 60px;
-  width: 233.3px;
+  height: 70px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  align-items: space-around;
+  justify-content: space-around;
   font-size: 11pt;
   border-bottom: 0.5px solid lightgrey;
   padding: 0;
@@ -238,18 +263,111 @@ div.dates {
 div.dates > div {
   color: black;
   font-weight: bold;
+  height: 70px;
+  width: 50%;
+  display: flex;
+  align-items: space-around;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div.dates > div:first-child {
   border-right: 0.5px solid lightgrey;
-  width: %;
-  height: 60px;
 }
 
 div.dates > div > input {
-  width: 100px;
-  margin-top: 2px;
+  width: 90%;
+  border: none;
+  padding-left: 13px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+div.dates > div > * {
+  padding-left: 13px;
+}
+
+div.guests {
+  height: 70px;
+  border-bottom: 0.5px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.guests > * {
+  padding-left: 13px;
+}
+
+div.guests > label {
+  font-weight: bold;
+  color: black;
+}
+
+div.guests > select {
+  border: none;
+  background-color: white;
+  width: 95%;
+  margin-top: 5px;
+}
+
+div.submit-booking {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+div.submit-booking > button {
+  width: 240px;
+  height: 45px;
+  background-color: rgb(86, 182, 86);
+  color: white;
+  font-weight: bold;
+  border: 2px solid rgb(86, 182, 86);
+  cursor: pointer;
+}
+
+div.submit-booking > button:hover {
+  color: rgb(86, 182, 86);
+  background-color: white;
+  -webkit-transition-duration: 0.3s;
 }
 
 form.booking-form {
   padding: 0;
   border: none;
-  height: 100%;
+  height: 210px;
+}
+
+div.reviews-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: -10px;
+  height: 25px;
+}
+
+span.i-container > i {
+  color: white;
+  margin-left: 6px;
+}
+
+span.username {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+span.i-container {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span.i-container.up {
+  background-color: rgb(86, 182, 86);
+}
+span.i-container.down {
+  background-color: darkgrey;
 }
