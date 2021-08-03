@@ -1,11 +1,13 @@
 /* TODO Add site wide styles */
 
 body {
-  font-family: Calibre, Helvetica, Arial, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background-color: rgb(246, 246, 246);
   margin: 0;
   padding: 0;
   color: rgb(61, 61, 61);
+  z-index: -1;
 }
 
 h1 {
@@ -112,4 +114,8 @@ div.about-content {
 
 p.about-desc {
   padding: 10px 10px;
+}
+
+#modal-content {
+  z-index: 3;
 }

@@ -42,6 +42,11 @@ const Map = ({ locations }) => {
     setMap(null);
   }, []);
 
+  useEffect(() => {
+    if (!showInfo) return;
+    setPresetPos({ lat: showInfo.lat, lng: showInfo.lng });
+  }, [showInfo]);
+
   return (
     <div className="map_page__container">
       <div style={{ height: "900px", width: "300px" }}>

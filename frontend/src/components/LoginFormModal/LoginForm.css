@@ -1,8 +1,20 @@
 input {
-    display: flex;
+  display: flex;
 }
 
 p.login:hover {
-    cursor: pointer;
-    text-decoration: rgb(22, 142, 197) solid underline;
+  cursor: pointer;
+  text-decoration: rgb(22, 142, 197) solid underline;
+}
+
+form.login {
+  display: flex;
+  flex-direction: column;
+  margin-top: -15px;
+}
+
+form.login > button {
+  align-self: center;
+  margin-top: 15px;
+  width: fit-content;
 }

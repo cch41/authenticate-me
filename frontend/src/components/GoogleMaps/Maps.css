@@ -22,4 +22,5 @@ div.map.info-container {
 
 .map_page__container {
   height: 100%;
+  z-index: 0;
 }

@@ -8,7 +8,7 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  z-index: 2;
+  z-index: 4;
 }
 
 img.logo {
@@ -151,10 +151,10 @@ span.about:hover {
 }
 
 a.signup {
-  border-radius: 20%;
+  border-radius: 25px;
   width: fit-content;
   padding: 5px 10px;
-  border: 1px solid rgb(22, 142, 197);
+  border: 2px solid rgb(22, 142, 197);
   background-color: rgb(22, 142, 197);
   color: white;
   cursor: pointer;
@@ -162,8 +162,7 @@ a.signup {
 }
 
 a.signup:hover {
-  border-radius: 20%;
-  border: 1px solid rgb(22, 142, 197);
+  border: 2px solid rgb(22, 142, 197);
   width: fit-content;
   padding: 5px 10px;
   color: rgb(22, 142, 197);
