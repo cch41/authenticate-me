@@ -14,6 +14,7 @@ const Bookings = () => {
   const pastBookings = useSelector((state) => state.bookings.past);
   const dispatch = useDispatch();
   const [updates, setUpdates] = useState(0);
+  const [edited, setEdited] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Bookings = () => {
       await dispatch(getBookings(userId));
       setLoaded(true);
     })();
-  }, [updates, dispatch, userId]);
+  }, [updates, dispatch, userId, edited]);
 
   const handleCancel = (e) => {
     const bookingId = e.target.value;
@@ -40,7 +41,7 @@ const Bookings = () => {
   return (
     loaded && (
       <div className="bookings-container">
-        <h4>Upcoming Bookings</h4>
+        <h4 className="bookings">Upcoming Bookings</h4>
         {upcomingBookings.map((booking, i) => {
           return (
             <div key={i} className="one-booking-container">
@@ -48,14 +49,16 @@ const Bookings = () => {
               <BookingFormModal
                 bookingId={booking.id}
                 locationId={booking.locationId}
+                edited={edited}
+                setEdited={setEdited}
               />
               <button value={booking.id} onClick={handleCancel}>
-                CANCEL BOOKING
+                Cancel
               </button>
             </div>
           );
         })}
-        <h4>Previous Bookings</h4>
+        <h4 className="bookings">Previous Bookings</h4>
         {pastBookings.map((booking, i) => {
           return (
             <div key={i} className="one-booking-container">

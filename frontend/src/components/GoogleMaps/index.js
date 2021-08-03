@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   GoogleMap,
   useJsApiLoader,
@@ -43,26 +43,23 @@ const Map = ({ locations }) => {
   }, []);
 
   return (
-    // Important! Always set the container height explicitly
-
     <div className="map_page__container">
       <div style={{ height: "900px", width: "300px" }}>
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={containerStyle}
-            zoom={5}
+            zoom={4}
             center={locations.length ? locationsPos : presetPos}
             onUnmount={onUnmount}
           >
             {locations.map((location) => (
               <>
                 <Marker
-                  onClick={() => setShowInfo(location.id)}
+                  onClick={() => setShowInfo(location)}
                   key={location.id}
                   position={{ lat: location.latitude, lng: location.longitude }}
                   title={location.name}
                   icon={{
-                    path: "M 100 100 L 300 100 L 200 300 z",
                     fillColor: "blue",
                     fillOpacity: 1,
                     scale: 0.1,
@@ -71,15 +68,24 @@ const Map = ({ locations }) => {
                   }}
                   streetView={false}
                 />
-                <InfoWindow
-                  position={{ lat: location.latitude, lng: location.longitude }}
-                  shouldFocus={false}
-                >
-                  <div className="map info-container">
-                    <img className="map location-pic" src={location.imageUrl} />
-                    <div className="map location-info">{location.name}</div>
-                  </div>
-                </InfoWindow>
+                {showInfo && (
+                  <InfoWindow
+                    position={{
+                      lat: showInfo.latitude + 0.1,
+                      lng: showInfo.longitude,
+                    }}
+                    shouldFocus={false}
+                    onCloseClick={() => setShowInfo(0)}
+                  >
+                    <div className="map info-container">
+                      <img
+                        className="map location-pic"
+                        src={showInfo.imageUrl}
+                      />
+                      <div className="map location-info">{showInfo.name}</div>
+                    </div>
+                  </InfoWindow>
+                )}
               </>
             ))}
           </GoogleMap>

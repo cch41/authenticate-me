@@ -1,0 +1,8 @@
+button.book {
+  border-radius: 0;
+}
+
+div.booking-form.modal {
+  height: 210px;
+  margin: 0;
+}

@@ -29,14 +29,14 @@ export default function ReviewForm({ locationId, setShowModal }) {
   }, [recommends]);
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="review" onSubmit={onSubmit}>
       <textarea
         name="content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
       ></textarea>
-      <div className="rocommends">
+      <div className="recommends">
         Recommend:
         <i
           onClick={() => setRocommends(true)}
@@ -48,12 +48,13 @@ export default function ReviewForm({ locationId, setShowModal }) {
         ></i>
       </div>
       <button
+        className="submit-review"
         disabled={
           !content.length || content.length > 500 || recommends === "none"
         }
         type="submit"
       >
-        POST REVIEW
+        POST
       </button>
     </form>
   );

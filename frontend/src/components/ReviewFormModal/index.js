@@ -8,7 +8,7 @@ function ReviewFormModal({ locationId }) {
   return (
     <>
       <button className="review" onClick={() => setShowModal(true)}>
-        Write Review
+        Write review
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

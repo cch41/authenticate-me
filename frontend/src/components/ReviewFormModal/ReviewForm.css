@@ -4,6 +4,14 @@ div.recommendation {
   width: 40px;
 }
 
+div.recommends {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 i.fa-thumbs-up,
 i.fa-thumbs-down {
   color: grey;
@@ -15,4 +23,13 @@ i.fa-thumbs-up.--clicked {
 
 i.fa-thumbs-down.--clicked {
   color: rgb(235, 58, 58);
+}
+
+form.review {
+  display: flex;
+  flex-direction: column;
+}
+
+button.submit-review {
+  align-self: center;
 }

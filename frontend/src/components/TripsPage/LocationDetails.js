@@ -3,25 +3,25 @@ import { useHistory } from "react-router-dom";
 
 export default function LocationDetails({ booking, i }) {
   const history = useHistory();
-  console.log(booking);
 
   return (
     <>
-      <div>
+      <div className="booking-picture">
         <img
           className="booking-picture"
           alt="booking location"
           src={booking.Location.imageUrl}
+          onClick={() => history.push(`/locations/${booking.Location.id}`)}
         />
-        <button
+      </div>
+      <div className="header location">
+        Location
+        <p
+          className="location-name"
           onClick={() => history.push(`/locations/${booking.Location.id}`)}
         >
-          View Location
-        </button>
-      </div>
-      <div className="header">
-        Location
-        <p>{booking.Location.name}</p>
+          {booking.Location.name}
+        </p>
       </div>
       <div className="header">
         Price
