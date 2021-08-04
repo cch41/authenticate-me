@@ -1,32 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addReview } from "../../store/location";
+import { addReview, editReview } from "../../store/location";
+import { useHistory } from "react-router-dom";
 import "./ReviewForm.css";
 
-export default function ReviewForm({ locationId, setShowModal }) {
-  const [content, setContent] = useState("");
+export default function ReviewForm({ locationId, setShowModal, edit, review }) {
+  const [content, setContent] = useState(review ? review.content : "");
   const userId = useSelector((state) => state.session.user.id);
-  const [recommends, setRocommends] = useState("none");
+  const history = useHistory();
+  const [recommends, setRecommends] = useState(
+    review ? review.recommends : "none"
+  );
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addReview(content, userId, locationId, recommends));
+    if (!edit) dispatch(addReview(content, userId, locationId, recommends));
+    else {
+      dispatch(editReview(content, locationId, recommends, review.id));
+      window.location.reload();
+    }
     setShowModal(false);
   };
-
-  const handleClick = (e) => {};
-
-  useEffect(() => {
-    if (recommends === "none") return;
-
-    const prev = document.querySelector(".--clicked");
-    if (prev) prev.classList.remove("--clicked");
-
-    if (recommends)
-      document.querySelector(".fa-thumbs-up").classList.add("--clicked");
-    else document.querySelector(".fa-thumbs-down").classList.add("--clicked");
-  }, [recommends]);
 
   return (
     <form className="review" onSubmit={onSubmit}>
@@ -39,12 +34,16 @@ export default function ReviewForm({ locationId, setShowModal }) {
       <div className="recommends">
         Recommend:
         <i
-          onClick={() => setRocommends(true)}
-          className="fas fa-solid fa-thumbs-up"
+          onClick={() => setRecommends(true)}
+          className={`fas fa-solid fa-thumbs-up ${
+            recommends && recommends !== "none" ? "--clicked" : ""
+          }`}
         ></i>
         <i
-          onClick={() => setRocommends(false)}
-          className="fas fa-solid fa-thumbs-down"
+          onClick={() => setRecommends(false)}
+          className={`fas fa-solid fa-thumbs-down ${
+            recommends ? "" : "--clicked"
+          }`}
         ></i>
       </div>
       <button

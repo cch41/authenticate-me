@@ -17,7 +17,7 @@ export default function About() {
             surfing and coding. This website is inspired by{" "}
             <a href="https://www.hipcamp.com/">HipCamp</a> and more information{" "}
             <br></br>
-            about the designand technologies implemented can be found in the
+            about the design and technologies implemented can be found in the
             project's <a href="https://github.com/cch41/surfcamp">repository</a>
             .
           </p>

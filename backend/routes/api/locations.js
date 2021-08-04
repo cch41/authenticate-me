@@ -233,6 +233,17 @@ router.post("/:locationId/reviews", (req, res) => {
   Review.create({ content, userId, locationId, recommends });
 });
 
+router.patch("/:locationId/reviews/:reviewId", (req, res) => {
+  const { reviewId } = req.params;
+  const { content, recommends } = req.body;
+  Review.update({ content, recommends }, { where: { id: reviewId } });
+});
+
+router.delete("/:locationId/reviews/:reviewId", (req, res) => {
+  const { reviewId } = req.params;
+  Review.destroy({ where: { id: reviewId } });
+});
+
 router.get(
   "/query/:query",
   asyncHandler(async (req, res) => {

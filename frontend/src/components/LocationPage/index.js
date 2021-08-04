@@ -5,10 +5,12 @@ import { useParams, Redirect } from "react-router";
 import { getLocation } from "../../store/location";
 import BookingForm from "./BookingForm";
 import Weather from "./Weather";
+import Reviews from "./Reviews";
 
 const LocationPage = () => {
   const { locationId } = useParams();
   const location = useSelector((state) => state.locations.currentLocation);
+  const userId = useSelector((state) => state.session.user.id);
   const [isLoaded, setIsLoaded] = useState(false);
   const [numRecommends, setNumRecommends] = useState(0);
   const dispatch = useDispatch();
@@ -52,40 +54,7 @@ const LocationPage = () => {
             <BookingForm locationId={location.id} price={location.price} />
           </div>
           <Weather city={location.city} state={location.state} />
-          <div className="location-reviews">
-            <h3>{location.Reviews.length} reviews</h3>
-            {location.Reviews.map((review, i) => (
-              <div key={i} className="one-review">
-                <div className="reviews-header">
-                  {review.recommends && (
-                    <>
-                      <span className="i-container up">
-                        <i className="fas fa-solid fa-thumbs-up"></i>
-                      </span>
-                      <span className="username">
-                        {review.User.username + " "}{" "}
-                      </span>
-                      <span className="rec">- recommends this listing.</span>
-                    </>
-                  )}
-                  {!review.recommends && (
-                    <>
-                      <span className="i-container down">
-                        <i className="fas fa-solid fa-thumbs-down"></i>
-                      </span>
-                      <span className="username">
-                        {review.User.username + " "}
-                      </span>
-                      <span className="rec">
-                        - doesn't recommend this listing.
-                      </span>
-                    </>
-                  )}
-                </div>
-                <p>{review.content}</p>
-              </div>
-            ))}
-          </div>
+          <Reviews reviews={location.Reviews} userId={userId} />
         </div>
       )}
     </>

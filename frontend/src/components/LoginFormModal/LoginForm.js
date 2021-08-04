@@ -10,9 +10,12 @@ const LoginFormPage = () => {
   const dispatch = useDispatch();
 
   function demoLogin() {
-    setCredential("demo@user.io");
-    setPassword("password");
-    onSubmit();
+    return dispatch(
+      login({ credential: "demo@user.io", password: "password" })
+    ).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
   }
 
   const onSubmit = (e) => {

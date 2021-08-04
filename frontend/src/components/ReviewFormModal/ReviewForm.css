@@ -15,6 +15,7 @@ div.recommends {
 i.fa-thumbs-up,
 i.fa-thumbs-down {
   color: grey;
+  cursor: pointer;
 }
 
 i.fa-thumbs-up.--clicked {

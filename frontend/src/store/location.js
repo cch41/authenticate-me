@@ -110,6 +110,24 @@ export const searchLocations = (query) => async (dispatch) => {
   return data;
 };
 
+export const editReview =
+  (content, locationId, recommends, reviewId) => async (dispatch) => {
+    await csrfFetch(`/api/locations/${locationId}/reviews/${reviewId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ content, recommends }),
+    });
+    return;
+  };
+
+export const deleteReview = (locationId, reviewId) => (dispatch) => {
+  csrfFetch(`/api/locations/${locationId}/reviews/${reviewId}`, {
+    method: "DELETE",
+  });
+};
+
 export const locationsReducer = (state = {}, action) => {
   switch (action.type) {
     case SET_LOCATION: {

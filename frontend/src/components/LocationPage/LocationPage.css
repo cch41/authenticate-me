@@ -371,3 +371,29 @@ span.i-container.up {
 span.i-container.down {
   background-color: darkgrey;
 }
+
+span.edit {
+  height: 20px;
+  width: 20px;
+  align-self: center;
+  justify-content: center;
+  justify-self: flex-end;
+  margin-left: 10px;
+}
+
+i.fa-pen,
+i.fa-times {
+  height: 15px;
+  width: 15px;
+  color: rgb(61, 61, 61);
+  display: inline-block;
+  cursor: pointer;
+}
+
+i.fa-pen {
+  font-size: 15px;
+}
+
+i.fa-times {
+  font-size: 20px;
+}

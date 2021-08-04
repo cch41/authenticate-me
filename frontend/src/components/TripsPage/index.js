@@ -63,7 +63,11 @@ const Bookings = () => {
           return (
             <div key={i} className="one-booking-container">
               <LocationDetails key={i} booking={booking} i={i} />
-              <ReviewFormModal locationId={booking.Location.id} />
+              <ReviewFormModal
+                locationId={booking.Location.id}
+                edit={false}
+                review={false}
+              />
             </div>
           );
         })}

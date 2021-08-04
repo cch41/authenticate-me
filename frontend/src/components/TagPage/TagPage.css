@@ -38,7 +38,7 @@ div.search-name > p {
   background: whitesmoke;
   height: 130px;
   width: 400px;
-  font: 20px "Helvetica Neue";
+  font: 20px;
   font-weight: bold;
   color: black;
   display: flex;

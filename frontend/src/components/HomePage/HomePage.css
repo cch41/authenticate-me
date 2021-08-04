@@ -52,7 +52,7 @@ h2 {
   flex-direction: column;
   height: 22%;
   width: 100%;
-  font: 16pt "Helvetica Neue";
+  font: 16pt;
   font-weight: bold;
   color: white;
 }

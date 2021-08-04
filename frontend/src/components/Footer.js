@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer-message">Developed by Connor Henderson</div>
         <div className="footer-links">
           <div className="icon-list">
-            <a target="_blank" href="https://github.com/cch41/board_games">
+            <a target="_blank" href="https://github.com/cch41/surfcamp">
               <img className="link" src={github} alt="Github" />
             </a>
             <a

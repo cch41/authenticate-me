@@ -13,14 +13,16 @@ const SearchPage = () => {
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+  console.log(query);
 
   function formatQuery(query) {
     const [city, state, country] = query.split(",");
     let formatted = "";
+    console.log(city, state, country);
 
     if (city && state) formatted += `${city}, ${state}`;
     else if (city) formatted += `${city}`;
-    else if (city) formatted += `${state}`;
+    else if (state) formatted += `${state}`;
 
     if (country) formatted += ` (${country})`;
     return formatted;
