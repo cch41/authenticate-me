@@ -4,7 +4,7 @@ _By Connor Henderson_ - [visit Surfcamp](https://surf-camp.herokuapp.com/)
 
 ## Overview
 
-Surfcamp is a full-stack application inspired by [Hipcamp](https://www.hipcamp.com/en-US) with a focus on surfing locations. It was a fun project for practicing implementing CRUD features across the stack through React, Redux, Express, and then ultimately the PostgreSQL database via Sequelize commands. It was also great practice for styling frontend elements given that I was able to reference the Hipcamp website for inspiration.
+Surfcamp is a full-stack application inspired by [Hipcamp](https://www.hipcamp.com/en-US) with a focus on surfing locations. It was a fun project for practicing implementing CRUD features across the stack through React, Redux, Express, and then ultimately the PostgreSQL database via Sequelize commands. It was also great practice for styling frontend elements as I was able to reference the Hipcamp website for inspiration.
 
 One area that I would be interested in exploring further is enabling instant messaging between hosts and their guests via websockets. I have experience implementing websockets from a previous project where we were obtaining live data on tradeable securities, and think adding this feature to a live website would help improve the user experience.
 
