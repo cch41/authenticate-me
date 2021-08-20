@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { login } from "../../store/session";
 import "./LoginForm.css";
 
-const LoginFormPage = () => {
+const LoginFormPage = ({ setShowModal }) => {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
   function demoLogin() {
+    setShowModal(false);
     return dispatch(
       login({ credential: "demo@user.io", password: "password" })
     ).catch(async (res) => {
@@ -20,8 +21,8 @@ const LoginFormPage = () => {
 
   const onSubmit = (e) => {
     if (e) e.preventDefault();
+    setShowModal(false);
 
-    // "Make sure to handle any errors from the thunk if there are any"
     return dispatch(login({ credential, password })).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);

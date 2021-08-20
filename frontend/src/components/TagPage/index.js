@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import LoginFormModal from "../LoginFormModal";
 import Location from "./Location";
 import Map from "../GoogleMaps";
 import ResultsBar from "./ResultsBar";
@@ -10,6 +12,7 @@ const TagPage = () => {
   const [locations, setLocations] = useState([]);
   const [displayed, setDisplayed] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     async function getTagData() {
@@ -35,13 +38,14 @@ const TagPage = () => {
         {loaded && !locations.length && <p>No results found.</p>}
         <div className="tag-page-locations">
           {locations.map((location, i) => (
-            <Location key={i} location={location} />
+            <Location key={i} location={location} user={user} />
           ))}
         </div>
         <div className="tag-page-map">
           <Map locations={locations} />
         </div>
       </div>
+      <LoginFormModal show={user ? false : true} />
     </div>
   );
 };

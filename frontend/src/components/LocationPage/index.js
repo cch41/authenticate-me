@@ -10,7 +10,7 @@ import Reviews from "./Reviews";
 const LocationPage = () => {
   const { locationId } = useParams();
   const location = useSelector((state) => state.locations.currentLocation);
-  const userId = useSelector((state) => state.session.user.id);
+  const user = useSelector((state) => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
   const [numRecommends, setNumRecommends] = useState(0);
   const dispatch = useDispatch();
@@ -32,7 +32,6 @@ const LocationPage = () => {
     }
   }, [location]);
 
-  const user = useSelector((state) => state.session.user);
   if (!user) return <Redirect to="/signup" />;
 
   return (
@@ -54,7 +53,7 @@ const LocationPage = () => {
             <BookingForm locationId={location.id} price={location.price} />
           </div>
           <Weather city={location.city} state={location.state} />
-          <Reviews reviews={location.Reviews} userId={userId} />
+          <Reviews reviews={location.Reviews} userId={user.id} />
         </div>
       )}
     </>
